@@ -3,9 +3,9 @@ var config = require('../config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 exports.assetsPath = function (_path) {
-  var assetsSubDirectory = process.env.NODE_ENV === 'production'
-    ? config.build.assetsSubDirectory
-    : config.dev.assetsSubDirectory
+  var assetsSubDirectory = process.env.NODE_ENV === 'production' ?
+    config.build.assetsSubDirectory :
+    config.dev.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
 
@@ -36,7 +36,7 @@ exports.cssLoaders = function (options) {
   }
 
   // generate loader string to be used with extract text plugin
-  function generateLoaders (loader, loaderOptions) {
+  function generateLoaders(loader, loaderOptions) {
     var loaders = [cssLoader, px2rpxLoader, postcssLoader]
     if (loader) {
       loaders.push({

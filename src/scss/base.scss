@@ -1,0 +1,29 @@
+@import "iconfont";
+@import "~sass-bem";
+
+$color__black: #333333;
+$color__grey: #999;
+
+$color-red: #c00;
+
+div, p {
+  color: $color__black;
+}
+
+// 通用函数
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.center {
+  text-align: center;
+}
+
+.container {
+  padding: 8px;
+}
+
+.row {
+  margin: 8px 0;
+}

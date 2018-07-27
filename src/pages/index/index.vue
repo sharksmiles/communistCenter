@@ -1,106 +1,55 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
-      </div>
+  <div class="o-index">
+    <div class="o-index__img"></div>
+    <div class="o-index__title row">
+      <span>党建动态</span>
+      <span>></span>
     </div>
-
-    <div class="usermotto">
-      <div class="user-motto">
-        <card :text="motto"></card>
-      </div>
-    </div>
-
-    <form class="form-container">
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
-     <button @click="getUserInfo">sb小程序</button>
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
+    <news></news>
+    <footnav></footnav>
   </div>
 </template>
 
 <script>
-import card from "@/components/card";
+  import footnav from "../component/footnav";
+  import news from "../component/news"
 
-export default {
-  data() {
-    return {
-      motto: "Hello World",
-      userInfo: {}
-    };
-  },
-
-  components: {
-    card
-  },
-
-  methods: {
-    bindViewTap() {
-      const url = "../logs/main";
-      wx.navigateTo({ url });
-    },
-    getUserInfo() {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: res => {
-              this.userInfo = res.userInfo;
-              console.log(this.userInfo);
-            }
-          });
-        }
-      });
-    },
-    clickHandle(msg, ev) {
-      console.log("clickHandle:", msg, ev);
-    }
-  },
-
-  created() {
-    // 调用应用实例的方法获取全局数据
-    this.getUserInfo();
-  }
-};
+  export default {
+    components: { footnav,news }
+  };
 </script>
 
-<style lang="scss" scoped>
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+<style lang="scss">
+  @import "../../scss/base";
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
+  /*
+  * 只支持双层嵌套
+  * o:root o-dd
+  * e:fist o-dd__ddd
+   */
 
-.userinfo-nickname {
-  color: #aaa;
-}
+  @include o('index') {
+    /*顶部图片*/
+    @include e('img') {
+      width: 100%;
+      height: 200px;
+      background-color: grey;
+    }
 
-.usermotto {
-  margin-top: 150px;
-}
-
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
-}
+    /*全文标题*/
+    @include e('title') {
+      padding: 8px;
+      background-color: yellow;
+      span {
+        line-height: 2;
+        &:first-child {
+          padding-left: 8px;
+          border-left: 5px solid $color-red;
+        }
+        &:last-child {
+          float: right;
+        }
+      }
+    }
+  }
 </style>
