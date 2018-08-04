@@ -6,13 +6,14 @@
       <span>></span>
     </div>
     <news></news>
+    <news></news>
     <footnav></footnav>
   </div>
 </template>
 
 <script>
-  import footnav from "../component/footnav";
-  import news from "../component/news"
+  import footnav from "../../component/footnav";
+  import news from "../../component/news"
 
   export default {
     components: { footnav,news }
@@ -32,19 +33,19 @@
     /*顶部图片*/
     @include e('img') {
       width: 100%;
-      height: 200px;
+      height: 300rpx;
       background-color: grey;
     }
 
     /*全文标题*/
     @include e('title') {
-      padding: 8px;
-      background-color: yellow;
+      padding: 4rpx 12rpx;
+      background-color: #ff978e;
       span {
         line-height: 2;
         &:first-child {
-          padding-left: 8px;
-          border-left: 5px solid $color-red;
+          padding-left: 12rpx;
+          border-left: 12rpx solid $color-red;
         }
         &:last-child {
           float: right;

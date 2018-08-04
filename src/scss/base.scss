@@ -4,7 +4,7 @@
 $color__black: #333333;
 $color__grey: #999;
 
-$color-red: #c00;
+$color-red: #cc0e2e;
 
 div, p {
   color: $color__black;
@@ -26,4 +26,32 @@ div, p {
 
 .row {
   margin: 8px 0;
+}
+
+* {
+  color: #333333;
+}
+
+.gridicon {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  div {
+    width: 123px;
+    height: 100px;
+    border: 1px solid #eee;
+  }
+  a {
+    padding: 23px 0;
+  }
+  text-align: center;
+  .iconfont {
+    color: $color__grey;
+    font-size: 27px;
+  }
+  p {
+    color: $color__grey;
+    font-size: 16px;
+    line-height: 2;
+  }
 }

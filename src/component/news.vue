@@ -1,9 +1,7 @@
 <template>
   <div class="o-news flex container">
-    <div>收看中共十九大法制专题专座</div>
-    <div>
-
-    </div>
+    <div>收看《中共十九大精神的法制解读》专题专座</div>
+    <div></div>
   </div>
 </template>
 
@@ -14,9 +12,13 @@
 </script>
 
 <style lang="scss" scoped>
-  @import "../../scss/base";
+  @import "../scss/base";
 
   @include o('news') {
+    border-bottom: 1px solid #eeeeee;
+    div:first-child {
+      font-size: 32 rpx;
+    }
     div:last-child {
       width: 130px;
       height: 80px;
