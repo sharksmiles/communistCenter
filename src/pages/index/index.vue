@@ -7,16 +7,14 @@
     </div>
     <news></news>
     <news></news>
-    <footnav></footnav>
   </div>
 </template>
 
 <script>
-  import footnav from "../../component/footnav";
   import news from "../../component/news"
 
   export default {
-    components: { footnav,news }
+    components: { news }
   };
 </script>
 

@@ -3,47 +3,39 @@
     <div class="o-serve__topimg"></div>
     <div class="o-serve__icon gridicon">
       <div>
-        <a href="../center/main">
+        <a href="../../pages/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
       <div>
-        <a href="../center/main">
+        <a href="../../pages/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
       <div>
-        <a href="../center/main">
+        <a href="../../pages/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
       <div>
-        <a href="../center/main">
+        <a href="../../pages/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
       <div>
-        <a href="../center/main">
+        <a href="../../pages/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
     </div>
-    <footnav></footnav>
   </div>
 </template>
 
-<script>
-  import footnav from "../../component/footnav";
-
-  export default {
-    components: { footnav }
-  };
-</script>
 
 <style lang="scss" scoped>
   @import "../../scss/base";

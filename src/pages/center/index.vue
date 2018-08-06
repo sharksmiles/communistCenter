@@ -4,18 +4,9 @@
       <div class="o-center__avator">
       </div>
     </div>
-    div.
-    <footnav></footnav>
   </div>
 </template>
 
-<script>
-  import footnav from "../../component/footnav";
-
-  export default {
-    components: { footnav }
-  };
-</script>
 
 <style lang="scss" scoped>
   @import "../../scss/base";
