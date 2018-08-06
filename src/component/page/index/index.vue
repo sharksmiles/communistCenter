@@ -1,9 +1,11 @@
 <template>
   <div class="o-index">
     <div class="o-index__img"></div>
-    <div class="o-index__title row">
-      <span>党建动态</span>
-      <span>></span>
+    <div class="o-index__nav row">
+      <span class="o-index__title">党建动态</span>
+      <a href="../home/more/main">
+        <span>></span>
+      </a>
     </div>
     <news></news>
     <news></news>
@@ -11,10 +13,10 @@
 </template>
 
 <script>
-  import news from "../../news"
+  import news from "../../news.vue";
 
   export default {
-    name:'index',
+    name: "index",
     components: { news }
   };
 </script>
@@ -29,26 +31,26 @@
    */
 
   @include o('index') {
+    background: #fff;
     /*顶部图片*/
     @include e('img') {
       width: 100%;
-      height: 300rpx;
+      height: 150px;
       background-color: grey;
     }
 
     /*全文标题*/
-    @include e('title') {
-      padding: 4rpx 12rpx;
+    @include e('nav') {
+      padding: 2px 6px;
       background-color: #ff978e;
-      span {
+      @include e('title') {
         line-height: 2;
-        &:first-child {
-          padding-left: 12rpx;
-          border-left: 12rpx solid $color-red;
-        }
-        &:last-child {
-          float: right;
-        }
+        padding-left: 6px;
+        border-left: 6px solid $color-red;
+
+      }
+      a {
+        float: right;
       }
     }
   }

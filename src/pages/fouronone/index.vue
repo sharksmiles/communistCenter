@@ -5,8 +5,8 @@
     <serve v-if="com==='serve'"></serve>
     <cente v-if="com==='cente'"></cente>
 
-    <div class="o-footer center">
-      <div class="flex">
+    <div class="o-footer">
+      <div class="flex center">
         <div class="o-footer__active" @click="changePage('index')">
           <div class="iconfont icon-Home"></div>
           <p>新闻首页</p>
@@ -38,7 +38,7 @@
     components: { index, manage, serve, cente },
     data() {
       return {
-        com: "index"
+        com: "manage"
       };
     },
     methods: {
@@ -54,6 +54,7 @@
 
   // 底部标题栏
   @include o('footer') {
+    background-color: #fff;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -61,6 +62,7 @@
     border-top: 1px solid #cfcfcf;
     .flex {
       padding: 6px 4px;
+      justify-content: space-around;
     }
     @include e('active') {
       .iconfont {

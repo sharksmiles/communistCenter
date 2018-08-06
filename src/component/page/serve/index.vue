@@ -1,57 +1,60 @@
 <template>
-  <div class="o-serve">
-    <div class="o-serve__topimg"></div>
-    <div class="o-serve__icon gridicon">
+  <div class="o-manage bgcolor">
+    <div class="o-manage__topimg"></div>
+    <info></info>
+    <div class="gridicon">
       <div>
-        <a href="../../component/page/center/main">
-          <span class="iconfont icon-me"></span>
-          <p>个人中心</p>
+        <a href="/pages/need/wish/main">
+          <span class="iconfont icon-love"></span>
+          <p>需求清单</p>
         </a>
       </div>
       <div>
-        <a href="../../component/page/center/main">
-          <span class="iconfont icon-me"></span>
-          <p>个人中心</p>
+        <a href="/pages/serve/resource/main">
+          <span class="iconfont icon-love"></span>
+          <p>资源清单</p>
         </a>
       </div>
       <div>
-        <a href="../../component/page/center/main">
-          <span class="iconfont icon-me"></span>
-          <p>个人中心</p>
+        <a href="/pages/serve/project/main">
+          <span class="iconfont icon-love"></span>
+          <p>项目</p>
         </a>
       </div>
       <div>
-        <a href="../../component/page/center/main">
-          <span class="iconfont icon-me"></span>
-          <p>个人中心</p>
+        <a href="/pages/serve/wish/main">
+          <span class="iconfont icon-love"></span>
+          <p>微心愿</p>
         </a>
       </div>
       <div>
-        <a href="../../component/page/center/main">
-          <span class="iconfont icon-me"></span>
-          <p>个人中心</p>
-        </a>
+      </div>
+      <div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import info from "../../info.vue";
+
   export default {
-    name:'serve'
-  }
+    name: "manage",
+    components: { info }
+  };
 </script>
 
 <style lang="scss" scoped>
   @import "../../../scss/base";
 
-  @include o('serve') {
-
+  @include o('manage') {
     @include e('topimg') {
-      width: 100%;
       height: 150px;
-      background-color: #333333;
+      background: black;
     }
 
+    .flex {
+      margin: 10px;
+    }
   }
 </style>
