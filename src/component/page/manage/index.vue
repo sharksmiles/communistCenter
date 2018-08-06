@@ -30,9 +30,14 @@
   </div>
 </template>
 
+<script>
+  export default {
+    name:'manage'
+  }
+</script>
 
 <style lang="scss" scoped>
-  @import "../../scss/base";
+  @import "../../../scss/base";
 
   @include o('manage') {
     @include e('topimg') {

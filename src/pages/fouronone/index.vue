@@ -7,19 +7,19 @@
 
     <div class="o-footer center">
       <div class="flex">
-        <div @click="changePage('index')">
+        <div class="o-footer__active" @click="changePage('index')">
           <div class="iconfont icon-Home"></div>
           <p>新闻首页</p>
         </div>
-        <div @click="changePage('manage')">
+        <div class="o-footer__active" @click="changePage('manage')">
           <div class="iconfont icon-function"></div>
           <p>党员管理</p>
         </div>
-        <div @click="changePage('serve')">
+        <div class="o-footer__active" @click="changePage('serve')">
           <div class="iconfont icon-love"></div>
           <p>党员服务</p>
         </div>
-        <div @click="changePage('cente')">
+        <div class="o-footer__active" @click="changePage('cente')">
           <div class="iconfont icon-me"></div>
           <p>个人中心</p>
         </div>
@@ -29,10 +29,10 @@
 </template>
 
 <script>
-  import index from "../index/index";
-  import manage from "../manage/index";
-  import serve from "../serve/index";
-  import cente from "../center/index";
+  import index from "../../component/page/index/index";
+  import manage from "../../component/page/manage/index";
+  import serve from "../../component/page/serve/index";
+  import cente from "../../component/page/center/index";
 
   export default {
     components: { index, manage, serve, cente },
@@ -61,18 +61,22 @@
     border-top: 1px solid #cfcfcf;
     .flex {
       padding: 6px 4px;
-      div:hover {
-        color: darkred !important;
+    }
+    @include e('active') {
+      .iconfont {
+        font-size: 24px;
       }
-    }
-    .iconfont {
-      font-size: 24px;
-    }
-    p {
-      font-size: 12px;
-    }
-    .iconfont, p {
-      color: $color__grey;
+      p {
+        font-size: 12px;
+      }
+      .iconfont, p {
+        color: $color__grey;
+      }
+      &:hover {
+        p,.iconfont {
+          color: darkred !important;
+        }
+      }
     }
   }
 </style>

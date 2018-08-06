@@ -7,9 +7,13 @@
   </div>
 </template>
 
-
+<script>
+  export default {
+    name:'cente'
+  }
+</script>
 <style lang="scss" scoped>
-  @import "../../scss/base";
+  @import "../../../scss/base";
 
   @include o('center') {
     @include e('navimg') {

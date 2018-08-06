@@ -11,15 +11,16 @@
 </template>
 
 <script>
-  import news from "../../component/news"
+  import news from "../../news"
 
   export default {
+    name:'index',
     components: { news }
   };
 </script>
 
 <style lang="scss">
-  @import "../../scss/base";
+  @import "../../../scss/base";
 
   /*
   * 只支持双层嵌套

@@ -3,31 +3,31 @@
     <div class="o-serve__topimg"></div>
     <div class="o-serve__icon gridicon">
       <div>
-        <a href="../../pages/center/main">
+        <a href="../../component/page/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
       <div>
-        <a href="../../pages/center/main">
+        <a href="../../component/page/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
       <div>
-        <a href="../../pages/center/main">
+        <a href="../../component/page/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
       <div>
-        <a href="../../pages/center/main">
+        <a href="../../component/page/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
       </div>
       <div>
-        <a href="../../pages/center/main">
+        <a href="../../component/page/center/main">
           <span class="iconfont icon-me"></span>
           <p>个人中心</p>
         </a>
@@ -36,9 +36,14 @@
   </div>
 </template>
 
+<script>
+  export default {
+    name:'serve'
+  }
+</script>
 
 <style lang="scss" scoped>
-  @import "../../scss/base";
+  @import "../../../scss/base";
 
   @include o('serve') {
 
