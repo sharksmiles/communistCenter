@@ -23,8 +23,10 @@
       height: 65px;
       text-align: left;
       margin-top: -32px;
-      background: #cc0e2e;
+      background-image: url("http://pd37peogt.bkt.clouddn.com/avator.jpg");
+      background-size: cover;
       border-radius: 50%;
+
     }
     .content {
       font-size: 16px;

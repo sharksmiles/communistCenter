@@ -36,6 +36,8 @@
   @import "../../../scss/base";
 
   @include o('hero') {
+    background: url("http://pd37peogt.bkt.clouddn.com/e%281%29.png");
+    background-size: cover;
     @include e('location') {
       font-size: 15px;
       width: 84%;

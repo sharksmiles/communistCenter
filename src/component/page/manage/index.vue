@@ -48,7 +48,8 @@
     @include e('topimg') {
       width: 100%;
       height: 150px;
-      background-color: #333333;
+      background-image: url("http://pd37peogt.bkt.clouddn.com/b%281%29.png");
+      background-size: cover;
     }
 
   }

@@ -36,18 +36,21 @@
     @include e('img') {
       width: 100%;
       height: 150px;
-      background-color: grey;
+      background-image: url('http://pd37peogt.bkt.clouddn.com/f%281%29.png');
+      background-size: cover;
     }
 
     /*全文标题*/
     @include e('nav') {
       padding: 2px 6px;
-      background-color: #ff978e;
+      background-image: url("http://pd37peogt.bkt.clouddn.com/f%281%29.png");
+      background-size: cover;
+      backdrop-filter: blur(10px);
+      filter: blur(10px);
       @include e('title') {
         line-height: 2;
         padding-left: 6px;
         border-left: 6px solid $color-red;
-
       }
       a {
         float: right;

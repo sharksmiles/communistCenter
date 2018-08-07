@@ -17,12 +17,13 @@
   @include o('news') {
     border-bottom: 1px solid #eeeeee;
     div:first-child {
-      font-size: 32 rpx;
+      font-size: 16px;
     }
     div:last-child {
-      width: 130px;
-      height: 80px;
-      background: grey;
+      width: 180px;
+      height: 70px;
+      background-image: url("http://pd37peogt.bkt.clouddn.com/f%281%29.png");
+      background-size: cover;
     }
   }
 </style>

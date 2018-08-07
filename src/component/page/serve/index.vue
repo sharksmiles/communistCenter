@@ -50,9 +50,9 @@
   @include o('manage') {
     @include e('topimg') {
       height: 150px;
-      background: black;
+      background-image: url("http://pd37peogt.bkt.clouddn.com/d%281%29.png");
+      background-size: cover;
     }
-
     .flex {
       margin: 10px;
     }

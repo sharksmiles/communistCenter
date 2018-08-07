@@ -4,7 +4,6 @@
     <manage v-if="com==='manage'"></manage>
     <serve v-if="com==='serve'"></serve>
     <cente v-if="com==='cente'"></cente>
-
     <div class="o-footer">
       <div class="flex center">
         <div class="o-footer__active" @click="changePage('index')">
@@ -24,7 +23,7 @@
           <p>个人中心</p>
         </div>
       </div>
-    </div>
+    </div>`
   </div>
 </template>
 
@@ -38,7 +37,8 @@
     components: { index, manage, serve, cente },
     data() {
       return {
-        com: "manage"
+        com: "manage",
+        arr: [], count: 0
       };
     },
     methods: {
@@ -75,7 +75,7 @@
         color: $color__grey;
       }
       &:hover {
-        p,.iconfont {
+        p, .iconfont {
           color: darkred !important;
         }
       }

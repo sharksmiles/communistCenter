@@ -39,7 +39,8 @@
   @include o('center') {
     @include e('navimg') {
       height: 150px;
-      background: green;
+      background-image: url("http://pd37peogt.bkt.clouddn.com/a%281%29.png");
+      background-size: cover;
     }
     @include e('avator') {
       display: table-cell;
@@ -50,7 +51,7 @@
       margin: 0 10vw;
       position: absolute;
       border-radius: 10px 10px 0 0;
-      background-color: #cc0e2e;
+      background-image:linear-gradient(90deg, #ffd45b, #fff 95%, #ffe22d);
       .info {
         width: 60vw;
         padding: 36px;
@@ -59,7 +60,8 @@
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background: rebeccapurple;
+          background-image: url("http://pd37peogt.bkt.clouddn.com/avator.jpg");
+          background-size: cover;
           float: left;
           margin-right: 12px;
           overflow: hidden;
