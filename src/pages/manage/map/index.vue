@@ -19,7 +19,7 @@
         },
         markers: [{
           // markers的信息
-          iconPath: "/static/location.png ",
+          iconPath: "http://pd37peogt.bkt.clouddn.com/Isometric%20creative%20flat%20design%20vector%2046%20%281%29%20%5B%E8%BD%AC%E6%8D%A2%5D.png",
           id: 0,
           latitude: 23.099994,
           longitude: 113.324520,

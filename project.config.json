@@ -9,8 +9,8 @@
 	},
 	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
-	"appid": "wx6fbe334ed350a534",
-	"projectname": "%E5%85%9A%E5%BB%BA%E6%80%9D%E6%94%BF%E9%A1%B9%E7%9B%AE",
+	"appid": "wx851c7ba551d1adff",
+	"projectname": "%E5%85%9A%E5%BB%BA%E6%80%9D%E6%94%BF%E9%A1%B9%E7%9B%AE2",
 	"condition": {
 		"search": {
 			"current": -1,

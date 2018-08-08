@@ -1,6 +1,6 @@
 <template>
     <div class="bgcolor">
-      <div style="height: 20vh;background:greenyellow "></div>
+      <div class="topimg"></div>
       <news></news>
       <news></news>
     </div>
@@ -17,4 +17,9 @@
 <style lang="scss" scoped>
 
   @import "../../../scss/base";
+  .topimg{
+    height: 180px;
+    background-image: url('http://pd37peogt.bkt.clouddn.com/f%281%29.png');
+    background-size: cover;
+  }
 </style>

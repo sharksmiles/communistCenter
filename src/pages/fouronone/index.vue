@@ -23,7 +23,7 @@
           <p>个人中心</p>
         </div>
       </div>
-    </div>`
+    </div>
   </div>
 </template>
 

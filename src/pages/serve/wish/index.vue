@@ -8,7 +8,7 @@
         </button>
       </a>
     </div>
-    <div style="height: 150px;background: green"></div>
+    <div style="height: 200px;background-image: url('http://pd37peogt.bkt.clouddn.com/c%281%29.png');background-size: cover"></div>
     <div class="flex o-wish__topBar">
       <span class="iconfont icon-me"></span>
       <div style="width: 75%">微心愿</div>

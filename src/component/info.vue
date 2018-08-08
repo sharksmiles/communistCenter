@@ -3,7 +3,7 @@
     <div class="avator">
     </div>
     <span class="content">蔡豪杰 | 党员</span>
-    <div class="right"> ></div>
+    <div class="right iconfont icon-right"></div>
   </div>
 </template>
 

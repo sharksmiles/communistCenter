@@ -1,5 +1,5 @@
 <template>
-  <div style="overflow: hidden;height: 100vh;background: white;">
+  <div style="overflow: hidden;height: 100vh;background: white;background-image: url('http://pd37peogt.bkt.clouddn.com/e%281%29.png');background-size: 100% 100%">
     <div class="o-project">
       <div style="color: darkred;position: absolute;right: 20px;font-size: 15px">我要发布</div>
       <div class="o-project__block">
@@ -41,6 +41,7 @@
   @include o('project') {
     padding: 20px;
     @include e('block') {
+      background-color: #fff;
       margin-top: 25px;
       padding: 20px;
       border: 3px solid darkred;

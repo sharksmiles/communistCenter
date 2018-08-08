@@ -22,7 +22,7 @@
     div:last-child {
       width: 180px;
       height: 70px;
-      background-image: url("http://pd37peogt.bkt.clouddn.com/f%281%29.png");
+      background-image: url("http://pd37peogt.bkt.clouddn.com/a%281%29.png");
       background-size: cover;
     }
   }

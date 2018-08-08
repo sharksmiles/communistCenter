@@ -11,19 +11,19 @@
       </div>
     </div>
     <div class="flex menu">
-      <div class="img"></div>
+      <div class="img iconfont icon-fabu-copy" style="background-color: #c9a4f2"></div>
       <div class="content">我的发布：<span>3件</span></div>
-      <div class="right">></div>
+      <div class="iconfont icon-right"></div>
     </div>
     <div class="flex menu">
-      <div class="img"></div>
-      <div class="content">我的发布：<span>3件</span></div>
-      <div class="right">></div>
+      <div class="img iconfont icon-geti" style="background-color: #48cfae"></div>
+      <div class="content">我的认领：<span>3件</span></div>
+      <div class="iconfont icon-right"></div>
     </div>
     <div class="flex menu">
-      <div class="img"></div>
-      <div class="content">我的发布：<span>3件</span></div>
-      <div class="right">></div>
+      <div class="img iconfont icon-jifen" style="background-color: #ff9623"></div>
+      <div class="content">我的积分：<span>3件</span></div>
+      <div class="iconfont"></div>
     </div>
   </div>
 </template>
@@ -74,12 +74,16 @@
   }
 
   .menu{
-    padding: 10px;
-    border-bottom: 1px solid #999999;
-    line-height: 50px;
+    padding: 15px;
+    border-bottom: 1px solid #eeeeee;
+    line-height: 35px;
     .img{
-      width: 50px;
-      background: yellow;
+      color: #fff;
+      width: 35px;
+      text-align: center;
+      font-size: 23px;
+      border-radius: 50%;
+      background: darkred;
     }
     .content{
       width: 260px;

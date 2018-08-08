@@ -1,23 +1,35 @@
 <template>
   <div class="o-index">
     <div class="o-index__img"></div>
-    <div class="o-index__nav row">
-      <span class="o-index__title">党建动态</span>
-      <a href="../home/more/main">
-        <span>></span>
-      </a>
-    </div>
+    <mewstitle></mewstitle>
     <news></news>
+    <mewstitle></mewstitle>
     <news></news>
   </div>
 </template>
 
 <script>
   import news from "../../news.vue";
+  import mewstitle from "../../newstitle.vue";
 
   export default {
     name: "index",
-    components: { news }
+    components: { news, mewstitle },
+    created() {
+      wx.request({
+        url: "http://whschoolbbs.tenqent.com/html/hanzhengjie/index.php/Api/Qingdan/index",
+        data: {
+          type: 1
+        },
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success:function(res) {
+          console.log(res.data)
+        }
+      });
+    }
   };
 </script>
 
@@ -38,23 +50,6 @@
       height: 150px;
       background-image: url('http://pd37peogt.bkt.clouddn.com/f%281%29.png');
       background-size: cover;
-    }
-
-    /*全文标题*/
-    @include e('nav') {
-      padding: 2px 6px;
-      background-image: url("http://pd37peogt.bkt.clouddn.com/f%281%29.png");
-      background-size: cover;
-      backdrop-filter: blur(10px);
-      filter: blur(10px);
-      @include e('title') {
-        line-height: 2;
-        padding-left: 6px;
-        border-left: 6px solid $color-red;
-      }
-      a {
-        float: right;
-      }
     }
   }
 </style>
