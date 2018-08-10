@@ -13,7 +13,6 @@
 <script>
   import news from "../../news.vue";
   import newstitle from "../../newstitle.vue";
-  import { getData } from "../../../utils/service";
 
   export default {
     name: "index",

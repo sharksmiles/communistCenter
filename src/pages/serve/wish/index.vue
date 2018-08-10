@@ -1,7 +1,7 @@
 <template>
   <div class="o-wish bgcolor">
     <div class="flex o-wish__topBar">
-      <div>微心愿：0条</div>
+      <div>微心愿：{{wishList.length}}条</div>
       <a href="/pages/serve/wish/mywish/main">
         <button>
           我的发布
@@ -19,8 +19,7 @@
       </a>
     </div>
 
-    <wishcard></wishcard>
-
+    <wishcard :wishList="wishList"></wishcard>
   </div>
 </template>
 
@@ -28,7 +27,22 @@
   import wishcard from '../../../component/wishcard.vue'
   export default {
     name: "index",
-    components:{wishcard}
+    components: { wishcard },
+    data(){
+      return{
+        wishList:[]
+      }
+    },
+    created() {
+      wx.request({
+        url: "https://hanzhengjie.tenqent.com/index.php/Api/Weixinyuan/index",
+        method: "post",
+        success: res => {
+          this.wishList = res.data.data
+          console.log(this.wishList)
+        }
+      });
+    }
   };
 
 </script>
@@ -37,6 +51,8 @@
   @import "../../../scss/base";
 
   @include o('wish') {
+    padding-bottom: 20px;
+    margin-bottom: 50px;
     @include e('topBar') {
       padding: 6px 12px;
       div ,.iconfont {

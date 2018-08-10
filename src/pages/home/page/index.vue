@@ -1,10 +1,13 @@
 <template>
-    <div>dd</div>
+    <div></div>
 </template>
 
 <script>
   export default {
-    name: "index"
+    name: "index",
+    onLoad:function(opts) {
+
+    }
   };
 </script>
 
