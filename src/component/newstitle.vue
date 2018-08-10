@@ -1,7 +1,9 @@
 <template>
   <div class="news-title row">
-    <span class="news-title__nav">党建动态</span>
-    <a href="/pages/home/more/main">
+    <span class="news-title__nav">
+      {{title}}
+    </span>
+    <a :href="'/pages/home/more/main?title='+title">
       <span class="iconfont icon-right" style="line-height: 2"></span>
     </a>
   </div>
@@ -9,7 +11,8 @@
 
 <script>
   export default {
-    name: "newstitle"
+    name: "newstitle",
+    props: ["title", "url"]
   };
 </script>
 

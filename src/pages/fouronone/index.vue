@@ -37,8 +37,9 @@
     components: { index, manage, serve, cente },
     data() {
       return {
-        com: "manage",
-        arr: [], count: 0
+        com: "index",
+        arr: [],
+        count: 0
       };
     },
     methods: {

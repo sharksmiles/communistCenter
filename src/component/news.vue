@@ -1,13 +1,16 @@
 <template>
-  <div class="o-news flex container">
-    <div>收看《中共十九大精神的法制解读》专题专座</div>
-    <div></div>
+  <div>
+    <div class="o-news flex container" v-for="item in pageList" :key="item.id">
+      <div>{{item.post_title}}</div>
+      <div :style="'background-image: url('+item.image+')'"></div>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "news.vue"
+    name: "news.vue",
+    props: ["pageList"]
   };
 </script>
 

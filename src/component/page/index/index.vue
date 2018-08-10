@@ -1,32 +1,56 @@
 <template>
   <div class="o-index">
     <div class="o-index__img"></div>
-    <mewstitle></mewstitle>
-    <news></news>
-    <mewstitle></mewstitle>
-    <news></news>
+    <newstitle :title="'党建动态'"></newstitle>
+    <news :pageList="content.pages1"></news>
+    <newstitle :title="'市场信息'"></newstitle>
+    <news :pageList="content.pages2"></news>
+    <newstitle :title="'活动预告'"></newstitle>
+    <news :pageList="content.pages3"></news>
   </div>
 </template>
 
 <script>
   import news from "../../news.vue";
-  import mewstitle from "../../newstitle.vue";
+  import newstitle from "../../newstitle.vue";
+  import { getData } from "../../../utils/service";
 
   export default {
     name: "index",
-    components: { news, mewstitle },
+    components: { news, newstitle },
+    data() {
+      return {
+        content: {
+          pages1: [],
+          pages2: [],
+          pages3: []
+        }
+      };
+    },
     created() {
+      let _this = this;
+
       wx.request({
-        url: "http://whschoolbbs.tenqent.com/html/hanzhengjie/index.php/Api/Qingdan/index",
-        data: {
-          type: 1
-        },
-        method: 'GET',
-        header: {
-          'content-type': 'application/json'
-        },
-        success:function(res) {
-          console.log(res.data)
+        url: "https://hanzhengjie.tenqent.com/index.php/Api/Dangjian/index",
+        method: "GET",
+        success: res => {
+          _this.content.pages1 = res.data.data;
+        }
+      });
+
+      wx.request({
+        url: "https://hanzhengjie.tenqent.com/index.php/Api/Shichang/index",
+        method: "GET",
+        success: res => {
+          _this.content.pages2 = res.data.data;
+        }
+      });
+
+      wx.request({
+        url: "https://hanzhengjie.tenqent.com/index.php/Api/Yugao/index",
+        method: "GET",
+        success: res => {
+          _this.content.pages3 = res.data.data;
         }
       });
     }
@@ -37,9 +61,9 @@
   @import "../../../scss/base";
 
   /*
-  * 只支持双层嵌套
-  * o:root o-dd
-  * e:fist o-dd__ddd
+   * 只支持双层嵌套
+   * o:root o-dd
+   * e:fist o-dd__ddd
    */
 
   @include o('index') {

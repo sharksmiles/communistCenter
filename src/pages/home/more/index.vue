@@ -1,20 +1,53 @@
+<!--
+    页面功能
+    1.根据外部传入过来的navtitle，自动渲染页面
+    2.如果要新增title，请在navs里添加配置项，页面将自动渲染
+-->
 <template>
   <div class="bgcolor">
     <div class="flex">
-      <span class="active">党建动态</span>
-      <span>市场信息</span>
-      <span>活动预告</span>
+      <span v-for="(item,index) of navs" :class="title.label=== item.label?'active':null" @click="getData(navs[index])">{{item.label}}</span>
     </div>
-    <news></news>
+    <news :pageList="pageList"></news>
   </div>
 </template>
 
 <script>
-  import news from '../../../component/news.vue'
+  import news from "../../../component/news.vue";
 
   export default {
     name: "index",
-    components:{news}
+    components: { news },
+    data() {
+      return {
+        title: {},
+        pageList: {},
+        navs: [
+          { label: "党建动态", url: "https://hanzhengjie.tenqent.com/index.php/Api/Dangjian/index" },
+          { label: "市场信息", url: "https://hanzhengjie.tenqent.com/index.php/Api/Shichang/index" },
+          { label: "活动预告", url: "https://hanzhengjie.tenqent.com/index.php/Api/Yugao/index" }]
+      };
+    },
+    methods: {
+      getData(objNav) {
+        this.title = objNav;
+        wx.request({
+          url: objNav.url,
+          method: "GET",
+          success: res => {
+            this.pageList = res.data.data;
+          }
+        });
+      }
+    },
+    onLoad: function(options) {
+      for (let item of this.navs) {
+        if (item.label === options.title) {
+          this.title = item;
+          this.getData(this.title);
+        }
+      }
+    }
   };
 </script>
 
