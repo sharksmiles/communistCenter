@@ -4,19 +4,19 @@
     <info></info>
     <div class="gridicon">
       <div>
-        <a href="/pages/need/wish/main">
+        <a href="/pages/serve/page/main?title=need">
           <span class="iconfont icon-xuqiu" style="color: #25a900"></span>
           <p>需求清单</p>
         </a>
       </div>
       <div>
-        <a href="/pages/serve/resource/main">
+        <a href="/pages/serve/page/main?title=resources">
           <span class="iconfont icon-ziyuan" style="color: #feb72b;"></span>
           <p>资源清单</p>
         </a>
       </div>
       <div>
-        <a href="/pages/serve/project/main">
+        <a href="/pages/serve/page/main?title=project">
           <span class="iconfont icon-tubiaozhizuomoban-" style="color: #19aca6"></span>
           <p>项目清单</p>
         </a>

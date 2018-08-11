@@ -44,7 +44,7 @@
       padding: 20px 0;
     }
     button {
-      background: darkred;
+      background: $color-red;
       color: white;
       border: none;
     }

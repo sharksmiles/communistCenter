@@ -20,7 +20,6 @@
     mounted() {
       let _this = this,
         openid = CONFIG.OpenId;
-      console.log(CONFIG);
       wx.request({
         url: "https://hanzhengjie.tenqent.com/index.php/Api/Weixinyuan/my_add",
         method: "GET",
@@ -32,7 +31,6 @@
         },
         success: res => {
           _this.wishList = res.data.date;
-          console.log(res);
         }
       });
     }

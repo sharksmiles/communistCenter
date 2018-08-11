@@ -77,7 +77,7 @@
       }
       &:hover {
         p, .iconfont {
-          color: darkred !important;
+          color: $color-red!important;
         }
       }
     }

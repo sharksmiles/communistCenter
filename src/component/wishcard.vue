@@ -17,16 +17,10 @@
         _this.wishList.map((value, index) => {
           // value.add_time = this.formatDate(value.add_time);
           _this.$set(_this.wishList[index], "add_time", _this.formatDate(value.add_time));
-
-          console.log(_this.wishList);
         });
       }, 500);
     },
     methods: {
-      /*
-       * 坑：小程序不支持filters过滤器
-       * 自定义日期格式化
-       */
       formatDate: function(time) {
         let date = new Date(parseInt(time));
         return `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`;

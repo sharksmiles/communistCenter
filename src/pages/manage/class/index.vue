@@ -1,12 +1,12 @@
 <template>
   <div class="bgcolor">
     <div class="topimg"></div>
-    <news :videoList="videoList" v-if="videoList"></news>
+    <news :itemList="videoList" v-if="videoList"></news>
   </div>
 </template>
 
 <script>
-  import news from "../../../component/newsvideo.vue";
+  import news from "../../../component/news.vue";
 
   export default {
     name: "index",
@@ -18,14 +18,10 @@
     },
     beforeMount() {
       let _this = this;
-      // _this.videoList="日你妈"
-      console.log('fuck')
       wx.request({
         url: "https://hanzhengjie.tenqent.com/index.php/Api/Weike/index",
         method: "get",
         success: function(res) {
-          // _this.videoList="rinima"
-          console.log(res)
           _this.videoList = res.data.data
         }
       });

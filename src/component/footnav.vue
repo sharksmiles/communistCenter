@@ -50,7 +50,7 @@
       color: $color__grey;
     }
     a:hover *{
-      color: darkred;
+      color: $color-red;
     }
   }
 </style>

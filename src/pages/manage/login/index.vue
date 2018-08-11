@@ -60,13 +60,13 @@
       width: 55%;
       margin: 0 auto;
       border-radius: 50px;
-      border: 3px solid darkred;
+      border: 3px solid $color-red;
       justify-content: space-around;
       overflow: hidden;
       @include e('button')
       :hover {
         color: #fff;
-        background: darkred;
+        background: $color-red;
       }
       div {
         width: 50%;
@@ -96,7 +96,7 @@
         font-size: 14px;
         margin-top: -24px;
         border-radius: 10px;
-        background-color: darkred;
+        background-color:$color-red;
         color: #fff;
       }
     }
@@ -105,7 +105,7 @@
       button{
         width: 30%;
         line-height: 2;
-        background-color: darkred;
+        background-color: $color-red;
         color: #ffffff;
       }
     }

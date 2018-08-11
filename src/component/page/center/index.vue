@@ -12,25 +12,48 @@
     </div>
     <div class="flex menu">
       <div class="img iconfont icon-fabu-copy" style="background-color: #c9a4f2"></div>
-      <div class="content">我的发布：<span>3件</span></div>
+      <div class="content">我的发布：<span>{{info.fa_num}}件</span></div>
       <div class="iconfont icon-right"></div>
     </div>
     <div class="flex menu">
       <div class="img iconfont icon-geti" style="background-color: #48cfae"></div>
-      <div class="content">我的认领：<span>3件</span></div>
+      <div class="content">我的认领：<span>{{info.ren_num}}件</span></div>
       <div class="iconfont icon-right"></div>
     </div>
     <div class="flex menu">
       <div class="img iconfont icon-jifen" style="background-color: #ff9623"></div>
-      <div class="content">我的积分：<span>3件</span></div>
-      <div class="iconfont"></div>
+      <div class="content">我的积分：<span>{{info.jifen?info.jifen:'无'}}</span></div>
+      <div class="iconfont icon-right" style="opacity: 0"></div>
     </div>
   </div>
 </template>
 
 <script>
+  import CONFIG from "../../../utils/config";
+
   export default {
-    name: "cente"
+    name: "cente",
+    data() {
+      return {
+        info: {}
+      };
+    },
+    created() {
+      let _this = this;
+      wx.request({
+        url: "https://hanzhengjie.tenqent.com/index.php/Api/Center/index",
+        method: "post",
+        header: {
+          "content-type": "application/x-www-form-urlencoded"
+        },
+        data: {
+          openid: CONFIG.OpenId
+        },
+        success: function(res) {
+          _this.info = res.data.data;
+        }
+      });
+    }
   };
 </script>
 <style lang="scss" scoped>
@@ -51,7 +74,7 @@
       margin: 0 10vw;
       position: absolute;
       border-radius: 10px 10px 0 0;
-      background-image:linear-gradient(90deg, #ffd45b, #fff 95%, #ffe22d);
+      background-image: linear-gradient(90deg, #ffd45b, #fff 95%, #ffe22d);
       .info {
         width: 60vw;
         padding: 36px;
@@ -73,22 +96,22 @@
     }
   }
 
-  .menu{
+  .menu {
     padding: 15px;
     border-bottom: 1px solid #eeeeee;
     line-height: 35px;
-    .img{
+    .img {
       color: #fff;
       width: 35px;
       text-align: center;
       font-size: 23px;
       border-radius: 50%;
-      background: darkred;
+      background: $color-red;
     }
-    .content{
+    .content {
       width: 260px;
     }
-    .right{
+    .right {
 
     }
   }

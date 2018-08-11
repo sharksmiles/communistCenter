@@ -2,11 +2,11 @@
   <div class="o-index">
     <div class="o-index__img"></div>
     <newstitle :title="'党建动态'"></newstitle>
-    <news :pageList="content.pages1"></news>
+    <news :itemList="content.pages1"></news>
     <newstitle :title="'市场信息'"></newstitle>
-    <news :pageList="content.pages2"></news>
+    <news :itemList="content.pages2"></news>
     <newstitle :title="'活动预告'"></newstitle>
-    <news :pageList="content.pages3"></news>
+    <news :itemList="content.pages3"></news>
   </div>
 </template>
 
@@ -67,6 +67,7 @@
 
   @include o('index') {
     background: #fff;
+    margin-bottom: 80px;
     /*顶部图片*/
     @include e('img') {
       width: 100%;

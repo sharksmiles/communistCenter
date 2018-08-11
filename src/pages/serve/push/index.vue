@@ -1,9 +1,9 @@
 <template>
   <div class="o-push bgcolor">
     <div class="o-push__main">
-      <p>心愿标题</p>
+      <p>{{nav}}标题</p>
       <input v-model="wishData.title" type="text">
-      <p>心愿内容</p>
+      <p>{{nav}}内容</p>
       <textarea v-model="wishData.content" rows="10" maxlength="1000"></textarea>
       <p>姓名</p>
       <input v-model="wishData.name" type="text">
@@ -17,23 +17,52 @@
 </template>
 
 <script>
-  import CONFIG from "../../../../utils/config.js";
+  import CONFIG from "../../../utils/config.js";
 
   export default {
     name: "index",
     data() {
       return {
+        baseUrl: "",
+        nav: "",
+        postUrl: "https://hanzhengjie.tenqent.com/index.php/Api/Qingdan/add",
+        listUrl: [{
+          label: "need",
+          url: "https://hanzhengjie.tenqent.com/index.php/Api/Qingdan/add"
+        }, {
+          label: "project,resources,wish",
+          url: "https://hanzhengjie.tenqent.com/index.php/Api/Qingdan/add"
+        }],
         wishData: {
           openid: "",
           title: "",
           name: "",
           tel: "",
-          content: ""
+          content: "",
+          type: ""
         }
       };
     },
     mounted() {
       this.wishData.openid = CONFIG.OpenId;
+      switch (this.baseUrl) {
+        case "wish":
+          this.postUrl = "https://hanzhengjie.tenqent.com/index.php/Api/Qingdan/add";
+          this.nav = "心愿";
+          break;
+        case "need":
+          this.wishData.type = 1;
+          this.nav = "需求";
+          break;
+        case "project":
+          this.wishData.type = 2;
+          this.nav = "项目";
+          break;
+        case "resources":
+          this.wishData.type = 3;
+          this.nav = "资源";
+          break;
+      }
     },
     methods: {
       verifyDate: function() {
@@ -51,19 +80,12 @@
       },
       postDate() {
         let _this = this;
-
-        // let arr=[]
-        // for(let item in this.wishData){
-        //   arr.push(this.wishData[item])
-        // }
-
-        console.log(_this.wishData);
         if (this.verifyDate()) {
           wx.request({
-            url: "https://hanzhengjie.tenqent.com/index.php/Api/Weixinyuan/add",
+            url: _this.postUrl,
             method: "post",
             header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
+              "content-type": "application/x-www-form-urlencoded" // 默认值
             },
             data: _this.wishData,
             success: function(res) {
@@ -71,7 +93,6 @@
                 icon: "success",
                 title: "提交成功！"
               });
-              console.log(res);
               for (let item in _this.wishData) {
                 item == "openid" ? null : _this.wishData[item] = null;
               }
@@ -79,12 +100,16 @@
           });
         }
       }
+    },
+    onLoad: function(opts) {
+      this.baseUrl = opts.title;
+      console.log(opts.title);
     }
   };
 </script>
 
 <style lang="scss" scoped>
-  @import "../../../../scss/base";
+  @import "../../../scss/base";
 
   @include o('push') {
     background: #efefef;
@@ -114,7 +139,7 @@
         border-radius: 3px;
         text-align: center;
         line-height: 2.5;
-        background: darkred;
+        background: $color-red;
         color: white;
         width: 100%;
       }

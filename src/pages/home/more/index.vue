@@ -6,9 +6,9 @@
 <template>
   <div class="bgcolor">
     <div class="flex">
-      <span v-for="(item,index) of navs" :class="title.label=== item.label?'active':null" @click="getData(navs[index])">{{item.label}}</span>
+      <span v-for="(item,index) of navs" :class="title.label=== item.label?'active':null" @click="getData(navs[index])" :key="index">{{item.label}}</span>
     </div>
-    <news :pageList="pageList"></news>
+    <news :itemList="pageList"></news>
   </div>
 </template>
 
@@ -63,7 +63,7 @@
   }
 
   .active {
-    border-bottom: 2px solid darkred;
-    color: darkred;
+    border-bottom: 2px solid $color-red;;
+    color: $color-red;
   }
 </style>
