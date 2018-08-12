@@ -1,13 +1,15 @@
 <template>
   <div>
-    <div class="o-news flex container" v-for="(item,index) in itemList" :key="index">
-      <div>
-        {{item.post_title}}
+    <a v-for="(item,index) in itemList" :key="index" :href="'/pages/home/detail/main?id='+item.id+'&type=b'">
+      <div class="o-news flex container">
+        <div>
+          {{item.post_title}}
+        </div>
+        <div class="o-news__img">
+          <img :src="item.image"/>
+        </div>
       </div>
-      <div class="o-news__img">
-        <img :src="item.image"/>
-      </div>
-    </div>
+    </a>
   </div>
 </template>
 

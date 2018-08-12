@@ -10,11 +10,13 @@
         </div>
       </div>
     </div>
-    <div class="flex menu">
-      <div class="img iconfont icon-fabu-copy" style="background-color: #c9a4f2"></div>
-      <div class="content">我的发布：<span>{{info.fa_num}}件</span></div>
-      <div class="iconfont icon-right"></div>
-    </div>
+    <a href="/pages/serve/wish/mywish/main">
+      <div class="flex menu">
+        <div class="img iconfont icon-fabu-copy" style="background-color: #c9a4f2"></div>
+        <div class="content">我的发布：<span>{{info.fa_num}}件</span></div>
+        <div class="iconfont icon-right"></div>
+      </div>
+    </a>
     <div class="flex menu">
       <div class="img iconfont icon-geti" style="background-color: #48cfae"></div>
       <div class="content">我的认领：<span>{{info.ren_num}}件</span></div>
@@ -22,7 +24,7 @@
     </div>
     <div class="flex menu">
       <div class="img iconfont icon-jifen" style="background-color: #ff9623"></div>
-      <div class="content">我的积分：<span>{{info.jifen?info.jifen:'无'}}</span></div>
+      <div class="content">我的积分：<span>{{info.jifen?info.jifen:"无"}}</span></div>
       <div class="iconfont icon-right" style="opacity: 0"></div>
     </div>
   </div>

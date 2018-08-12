@@ -8,7 +8,7 @@
       <p>姓名</p>
       <input v-model="wishData.name" type="text">
       <p>联系方式</p>
-      <input v-model="wishData.tel" type="number">
+      <input v-model="wishData.tel" type="number" maxlength="11">
     </div>
     <div class="o-push__button">
       <div @click="postDate(wishData)">提交</div>

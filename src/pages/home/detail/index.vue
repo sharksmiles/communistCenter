@@ -1,17 +1,14 @@
 <template>
   <div class="quanju">
-    <div class="biaoti">中华人民共和国预算法</div>
+    <div class="biaoti" v-html="postData.type==='a'?page.title:page.post_title"></div>
     <div class="caigou">
-      <span class="bt">
-        江汉区政府采购
-      </span>
-      <span class="shi">
-        7月10号
+      <span class="shi" v-if="postData.type==='b'">
+        {{page.post_date}}
       </span>
     </div>
     <div class="wenz">
-      <p>
-        菲律宾总统杜特尔特计划派遣一艘菲律宾海军舰艇前往利比亚，援救在利比亚遭恐怖分子绑架的三名菲律宾工程师。这一“模仿”中国海外撤侨的举动本来引得菲律宾人的好评，但菲律宾国营人民电视台在报道这条新闻时，居然盗用了一张中国海军054A型岳阳号导弹护卫舰的照片。菲律宾总统杜特尔特计划派遣一艘菲律宾海军舰艇前往利比亚，援救在利比亚遭恐怖分子绑架的三名菲律宾工程师。这一“模仿”中国海外撤侨的举动本来引得菲律宾人的好评，但菲律宾国营人民电视台在报道这条新闻时，居然盗用了一张中国海军054A型岳阳号导弹护卫舰的照片。菲律宾总统杜特尔特计划派遣一艘菲律宾海军舰艇前往利比亚，援救在利比亚遭恐怖分子绑架的三名菲律宾工程师。这一“模仿”中国海外撤侨的举动本来引得菲律宾人的好评，但菲律宾国营人民电视台在报道这条新闻时，居然盗用了一张中国海军054A型岳阳号导弹护卫舰的照片。
+      <p v-html="postData.type==='a'?page.content:page.post_content">
+
       </p>
     </div>
     <div class="foot">
@@ -24,20 +21,44 @@
 <script>
   export default {
     name: "index",
-    created() {
+    data() {
+      return {
+        postData: {
+          type: "",
+          id: ""
+        },
+        page: {}
+      };
+    },
+    mounted() {
+      let _this = this;
       wx.request({
-        url: "https://hanzhengjie.tenqent.com/index.php/Api/Weixinyuan/details",
+        url: "https://hanzhengjie.tenqent.com/index.php/Api/Xq/index",
         method: "get",
         data: {
-          id: 1
+          id: _this.postData.id,
+          type: _this.postData.type
         },
         header: {
           "content-type": "application/x-www-form-urlencoded" // 默认值
         },
         success: function(res) {
+          _this.page = res.data.data;
           console.log(res);
+          if (_this.postData.type === "b") {
+            console.log(res)
+            let date = new Date(_this.page.post_date);
+            _this.page.post_content = decodeURI(_this.page.post_content);
+            _this.page.post_title = decodeURI(_this.page.post_title);
+            _this.page.post_date = `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`;
+          }
         }
       });
+    },
+    onLoad: function(opts) {
+      console.log(opts);
+      this.postData.id = opts.id;
+      this.postData.type = opts.type;
     }
   };
 </script>
@@ -78,7 +99,6 @@
   .shi {
     display: block;
     float: left;
-    margin-left: 18px;
     font-size: 14px;
     color: #b9b9b9;
   }

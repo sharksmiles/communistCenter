@@ -15,29 +15,44 @@
         data: "",
         location: {
           latitude: 23.099994,
-          longitude: 113.324520,
+          longitude: 113.324520
         },
-        markers: [{
-          // markers的信息
-          iconPath: "http://pd37peogt.bkt.clouddn.com/Isometric%20creative%20flat%20design%20vector%2046%20%281%29%20%5B%E8%BD%AC%E6%8D%A2%5D.png",
-          id: 0,
-          latitude: 23.099994,
-          longitude: 113.324520,
-          width: 30,
-          height: 30,
-          // callout信息
-          callout: {
-            content: "武汉市汉正街品牌广场 \n 地址：XXXXXXXXXX",
-            color: "#ffffff",
-            fontSize: 10,
-            borderRadius: 5,
-            bgColor: "#ff0000",
-            display: "ALWAYS",
-            padding: 8,
-            textAlign: "left"
-          }
-        }]
+        markers: []
       };
+    },
+    mounted() {
+      let _this = this;
+      wx.request({
+        url: "https://hanzhengjie.tenqent.com/index.php/Api/Map/index",
+        success: function(res) {
+          console.log(res);
+          let obj = {
+            iconPath: "/static/locationIcon.png",
+            id: 0,
+            latitude: null,
+            longitude: null,
+            width: 100,
+            height: 100,
+            callout: {
+              content: "",
+              color: "#ffffff",
+              fontSize: 12,
+              borderRadius: 5,
+              bgColor: "#ff0000",
+              display: "ALWAYS",
+              padding: 8,
+              textAlign: "left"
+            }
+          };
+          for (let item of res.data.data) {
+            obj.latitude = item.latitude;
+            obj.longitude = item.longitude;
+            obj.callout.content = `${item.title} \n ${item.location}`;
+            console.log(obj);
+            _this.markers.push(obj);
+          }
+        }
+      });
     },
     methods: {
       regionchange(e) {

@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div class="wishcard" v-for="(item,index) in wishList" :key="index">
-      <h3>{{item.title}}</h3>
-      <span>{{item.add_time}}</span>
-    </div>
+    <a v-for="(item,index) in wishList" :key="index" :href="'/pages/home/detail/main?id='+item.id+'&type=a'">
+      <div class="wishcard">
+        <h3>{{item.title}}</h3>
+        <span>{{item.add_time}}</span>
+      </div>
+    </a>
   </div>
 </template>
 
