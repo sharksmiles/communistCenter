@@ -1,12 +1,8 @@
 <template>
   <div class="o-login bgcolor">
     <div class="bgcolor">
-      <div class="o-login__buttonblock">
-        <!--<div class="o-login__button flex">-->
-        <!--<div>登陆</div>-->
-        <!--<div>注册</div>-->
-        <!--</div>-->
-        <div class="o-login__loginButton">登陆</div>
+      <div class="o-login__buttonblock" style="text-align: center">
+        <img src="http://pd37peogt.bkt.clouddn.com/WechatIMG359.png" style="width: 100px;height: 100px" alt="">
       </div>
       <div class="o-login__form">
         <div class="flex">
@@ -25,7 +21,7 @@
         <div class="flex">
           <div class="o-login__title">验证码</div>
           <div class="o-login__titleinput">
-            <input type="text" placeholder="请输入验证码" v-model="postData.yzcode" maxlength="4"/>
+            <input type="text" placeholder="请输入验证码" v-model="postData.yzcode" maxlength="6"/>
           </div>
         </div>
         <div class="flex">
@@ -64,27 +60,77 @@
         index: 0,
         partyOrganizationList: [{ id: "", title: "" }],
         postData: {
+          openid: "",
           name: "",
           tel: "",
           card: "",
-          dzz_id: "",
+          dzz_id: 1,
           yzcode: ""
         }
       };
     },
     created() {
       let _this = this;
+      // 通过loginCode获取到openid
+      wx.login({
+        success: function(res) {
+          _this.getOpenId(res.code);
+        }
+      });
+      // 获取党组织列表
       wx.request({
         url: "https://hanzhengjie.tenqent.com/index.php/Api/Dangyuan/index",
         method: "get",
         success: function(res) {
-          console.log(res);
           _this.partyOrganizationList = res.data.data;
-          console.log(_this.partyOrganizationList);
         }
       });
     },
+    onShow: function() {
+      let _this = this;
+      _this.isLogin(_this.postData.openid);
+    },
     methods: {
+      // 获取openid并写入缓存
+      getOpenId(userCode) {
+        let _this = this;
+        wx.request({
+          url: "https://hanzhengjie.tenqent.com/Api/GetUserinfo/index",
+          method: "get",
+          header: {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          data: {
+            code: userCode
+          },
+          success: function(res) {
+            console.log("写入缓存");
+            _this.postData.openid = res.data.openid;
+            wx.setStorage({
+              key: "openid",
+              data: res.data.openid
+            });
+          }
+        });
+      },
+      // 查看用户是否注册
+      isLogin(openid) {
+        wx.request({
+          url: "https://hanzhengjie.tenqent.com/index.php/Api/Dangyuan/is_user",
+          method: "get",
+          data: {
+            openid: openid
+          },
+          success: res => {
+            console.log(res);
+            if (res.data.msg != "未登录") {
+              wx.navigateTo({
+                url: "/pages/fouronone/main"
+              });
+            }
+          }
+        });
+      },
       getConfirmCode() {
         let _this = this;
         console.log("dd");
@@ -102,7 +148,7 @@
             if (res.data.code === 200) {
               wx.showToast({
                 title: "验证码获取成功",
-                icon: "none",
+                icon: "success",
                 duration: 2000
               });
               _this.timeTic();
@@ -117,6 +163,7 @@
           }
         });
       },
+
       bindPickerChange: function(e) {
         let INDEX = e.target.value;
         this.index = INDEX;
@@ -124,23 +171,46 @@
       },
       postAllData() {
         let _this = this;
+
+        console.log(_this.postData);
+
         wx.request({
-          url: "",
+          url: "https://hanzhengjie.tenqent.com/index.php/Api/Dangyuan/register",
           method: "post",
           header: {
-            "content-type": "application/x-www-form-urlencoded" // 默认值
+            "content-type": "application/x-www-form-urlencoded"
           },
-          data: {}
-        });
+          data: {
+            openid: _this.postData.openid,
+            name: _this.postData.name,
+            tel: _this.postData.tel,
+            card: _this.postData.card,
+            dzz_id: _this.postData.dzz_id,
+            yzcode: _this.postData.yzcode
+          },
+          success:function(res) {
+            if(res.data.msg==="注册成功"){
+              wx.setStorage({
+                key: "openid",
+                data: _this.postData.openid
+              });
+              wx.navigateTo({
+                url: "/pages/fouronone/main"
+              });
+            }
+          }
+        })
       },
+
       timeTic() {
         let _this = this;
-        _this.confirm.time = 60;
+        _this.confirm.status = false;
+        _this.confirm.time = 10;
         if (_this.confirm.time) {
-          setInterval(function() {
-            if (_this.confirm.time === 0) {
+          var timer = setInterval(function() {
+            if (_this.confirm.time <= 0) {
               _this.confirm.time = null;
-              return;
+              clearInterval(timer);
             } else _this.confirm.time--;
           }, 1000);
         }
@@ -156,7 +226,7 @@
     width: 100%;
     background-color: #fff;
     @include e('buttonblock') {
-      padding: 55px 0;
+      padding: 30px 0;
     }
     @include e('button') {
       width: 55%;
@@ -178,7 +248,7 @@
       }
     }
     @include e('form') {
-      padding: 0 20px 100px 20px;
+      padding: 0 20px 60px 20px;
       .flex {
         padding: 10px 0;
         border-bottom: 1px solid #fafafa;

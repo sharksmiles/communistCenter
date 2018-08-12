@@ -12,16 +12,6 @@ export function setUserInfo() {
     }
   });
 }
-
-wx.login({
-  success: res => {
-    wx.request({
-      url: "https://api.weixin.qq.com/sns/jscode2session?appid=" + CONFIG.AppID + "&secret=" + CONFIG.AppSecret + "&js_code=" + res.code + "&grant_type=authorization_code",
-      success: function(res) {
-        CONFIG.OpenId = res.data.openid;
-      }
-    });
-  }
-});
+CONFIG.OpenId=wx.getStorageSync('openid')
 
 export default CONFIG;

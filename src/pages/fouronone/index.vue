@@ -6,19 +6,19 @@
     <cente v-if="com==='cente'"></cente>
     <div class="o-footer">
       <div class="flex center">
-        <div class="o-footer__active" @click="changePage('index')">
+        <div class="o-footer__active" :class="com==='index'?'active':''" @click="changePage('index')">
           <div class="iconfont icon-Home"></div>
           <p>新闻首页</p>
         </div>
-        <div class="o-footer__active" @click="changePage('manage')">
+        <div class="o-footer__active" :class="com==='manage'?'active':''" @click="changePage('manage')">
           <div class="iconfont icon-function"></div>
           <p>党员管理</p>
         </div>
-        <div class="o-footer__active" @click="changePage('serve')">
+        <div class="o-footer__active" :class="com==='serve'?'active':''" @click="changePage('serve')">
           <div class="iconfont icon-love"></div>
           <p>党员服务</p>
         </div>
-        <div class="o-footer__active" @click="changePage('cente')">
+        <div class="o-footer__active" :class="com==='cente'?'active':''" @click="changePage('cente')">
           <div class="iconfont icon-me"></div>
           <p>个人中心</p>
         </div>
@@ -39,12 +39,67 @@
       return {
         com: "index",
         arr: [],
-        count: 0
+        count: 0,
+        postData: {
+          openid: ""
+        }
       };
+    },
+    created() {
+      let _this = this;
+      wx.login({
+        success: function(res) {
+          _this.getOpenId(res.code);
+        }
+      });
+    },
+    onShow: function() {
+      let _this = this;
+      _this.isLogin(_this.postData.openid);
     },
     methods: {
       changePage(value) {
         this.com = value;
+      },
+      // 获取openid并写入缓存
+      getOpenId(userCode) {
+        let _this = this;
+        wx.request({
+          url: "https://hanzhengjie.tenqent.com/Api/GetUserinfo/index",
+          method: "get",
+          header: {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          data: {
+            code: userCode
+          },
+          success: function(res) {
+            _this.postData.openid = res.data.openid;
+            wx.setStorage({
+              key: "openid",
+              data: res.data.openid
+            });
+          }
+        });
+      },
+      // 查看用户是否注册
+      isLogin(openid) {
+        let _this = this;
+        wx.request({
+          url: "https://hanzhengjie.tenqent.com/index.php/Api/Dangyuan/is_user",
+          method: "get",
+          data: {
+            openid: openid
+          },
+          success: res => {
+            console.log(res);
+            if (res.data.msg === "未登录") {
+              wx.navigateTo({
+                url: "/pages/manage/login/main"
+              });
+            }
+          }
+        });
       }
     }
   };
@@ -75,10 +130,10 @@
       .iconfont, p {
         color: $color__grey;
       }
-      &:hover {
-        p, .iconfont {
-          color: $color-red!important;
-        }
+    }
+    .active {
+      p, .iconfont {
+        color: $color-red !important;
       }
     }
   }

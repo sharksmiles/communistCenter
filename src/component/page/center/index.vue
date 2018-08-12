@@ -4,8 +4,10 @@
       <div class="o-center__navimg">
         <div class="o-center__avator">
           <div class="info">
-            <div class="img"></div>
-            <div class="name">蔡豪杰</div>
+            <div class="img">
+              <open-data type="userAvatarUrl"></open-data>
+            </div>
+            <div class="name"> <open-data type="userNickName"></open-data></div>
           </div>
         </div>
       </div>
@@ -93,6 +95,7 @@
         }
         .name {
           line-height: 50px;
+          font-size: 16px;
         }
       }
     }
