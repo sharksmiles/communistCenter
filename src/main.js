@@ -15,7 +15,7 @@ export default {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#c00',
-      navigationBarTitleText: '党建思政',
+      navigationBarTitleText: '汉正街市场党建e家',
       navigationBarTextStyle: '#fff'
     }
   }

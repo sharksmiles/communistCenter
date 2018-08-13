@@ -53,7 +53,7 @@
         }
       });
     },
-    onShow: function() {
+    mounted(){
       let _this = this;
       _this.isLogin(_this.postData.openid);
     },
@@ -61,7 +61,7 @@
       changePage(value) {
         this.com = value;
       },
-      // 获取openid并写入缓存
+      // 获取用户openid写入缓存
       getOpenId(userCode) {
         let _this = this;
         wx.request({
@@ -92,7 +92,6 @@
             openid: openid
           },
           success: res => {
-            console.log(res);
             if (res.data.msg === "未登录") {
               wx.navigateTo({
                 url: "/pages/manage/login/main"
@@ -138,3 +137,5 @@
     }
   }
 </style>
+
+

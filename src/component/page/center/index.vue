@@ -66,7 +66,7 @@
   @include o('center') {
     @include e('navimg') {
       height: 150px;
-      background-image: url("http://pd37peogt.bkt.clouddn.com/a%281%29.png");
+      background-image: url("http://pd37peogt.bkt.clouddn.com/ewqew1.png");
       background-size: cover;
     }
     @include e('avator') {
@@ -78,7 +78,7 @@
       margin: 0 10vw;
       position: absolute;
       border-radius: 10px 10px 0 0;
-      background-image: linear-gradient(90deg, #ffd45b, #fff 95%, #ffe22d);
+      background-image: url("http://pd37peogt.bkt.clouddn.com/%E7%BB%84%2032%281%29.png");
       .info {
         width: 60vw;
         padding: 36px;
@@ -87,7 +87,6 @@
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background-image: url("http://pd37peogt.bkt.clouddn.com/avator.jpg");
           background-size: cover;
           float: left;
           margin-right: 12px;

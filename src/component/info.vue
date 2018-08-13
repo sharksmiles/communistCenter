@@ -11,13 +11,6 @@
 <script>
   export default {
     name: "info.vue",
-    created() {
-      wx.getUserInfo({
-        success: res => {
-          console.log(res);
-        }
-      });
-    }
   };
 </script>
 
@@ -31,7 +24,6 @@
       height: 65px;
       text-align: left;
       margin-top: -32px;
-      /*background-image: url("http://pd37peogt.bkt.clouddn.com/avator.jpg");*/
       background-size: cover;
       border-radius: 50%;
       overflow: hidden;

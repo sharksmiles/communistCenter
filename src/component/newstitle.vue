@@ -1,12 +1,12 @@
 <template>
-  <div class="news-title row">
+  <a :href="'/pages/home/more/main?title='+title">
+    <div class="news-title row">
     <span class="news-title__nav">
       {{title}}
     </span>
-    <a :href="'/pages/home/more/main?title='+title">
       <span class="iconfont icon-right" style="line-height: 2"></span>
-    </a>
-  </div>
+    </div>
+  </a>
 </template>
 
 <script>

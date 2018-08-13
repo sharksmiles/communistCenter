@@ -34,6 +34,7 @@
         method: "GET",
         success: res => {
           _this.content.pages1 = res.data.data;
+          _this.content.pages1.length = 3;
         }
       });
 
@@ -42,6 +43,7 @@
         method: "GET",
         success: res => {
           _this.content.pages2 = res.data.data;
+          _this.content.pages2.length = 3;
         }
       });
 
@@ -50,6 +52,7 @@
         method: "GET",
         success: res => {
           _this.content.pages3 = res.data.data;
+          _this.content.pages3 = 3;
         }
       });
     }

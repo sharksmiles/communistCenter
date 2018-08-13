@@ -11,7 +11,7 @@
       </div>
       <div>
         <a href="/pages/manage/hero/main">
-          <span class="iconfont icon-score" style="background-color: #e71522"></span>
+          <span class="iconfont icon-score" style="background-color: #27b1d8"></span>
           <p>党员风采</p>
         </a>
       </div>
@@ -23,7 +23,7 @@
       </div>
       <div>
         <a href="/pages/manage/money/main">
-          <span class="iconfont icon-party" style="background-color: #27b1d8"></span>
+          <span class="iconfont icon-party" style="background-color: #e71522"></span>
           <p>党费缴纳</p>
         </a>
       </div>
@@ -44,7 +44,6 @@
   @import "../../../scss/base";
 
   @include o('serve') {
-
     @include e('topimg') {
       width: 100%;
       height: 150px;

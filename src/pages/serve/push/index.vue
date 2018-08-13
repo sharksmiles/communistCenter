@@ -103,7 +103,6 @@
     },
     onLoad: function(opts) {
       this.baseUrl = opts.title;
-      console.log(opts.title);
     }
   };
 </script>

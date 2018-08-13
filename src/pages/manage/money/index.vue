@@ -2,7 +2,7 @@
   <div class="bgcolor">
     <div class="o-money">
       <div class="o-money__icon">
-        <span class="iconfont icon-love"></span>
+        <span class="iconfont icon-jiaofei o-money__jiaofei"></span>
       </div>
       <div>
         <button>确认缴纳</button>
@@ -48,6 +48,9 @@
       color: white;
       border: none;
     }
+    @include e('jiaofei'){
+      color: $color-red;
+    }
   }
 
   @include o('history') {
@@ -59,4 +62,5 @@
       padding: 0 6px;
     }
   }
+
 </style>

@@ -1,49 +1,50 @@
-<template>
-  <div class="o-login bgcolor">
-    <div class="bgcolor">
-      <div class="o-login__buttonblock" style="text-align: center">
-        <img src="http://pd37peogt.bkt.clouddn.com/WechatIMG359.png" style="width: 100px;height: 100px" alt="">
+<template style="background: #fff">
+  <div class="o-login">
+    <div style="display: flex">
+      <div class="o-login__button">
+        <div :class="loginButton?'active':null" @click="loginButton=!loginButton">登陆</div>
+        <div :class="loginButton?null:'active'" @click="loginButton=!loginButton">注册</div>
       </div>
-      <div class="o-login__form">
-        <div class="flex">
-          <div class="o-login__title">姓名</div>
-          <div class="o-login__titleinput">
-            <input type="text" placeholder="请输入姓名" v-model="postData.name"/>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="o-login__title">手机号</div>
-          <div class="o-login__titleinput">
-            <input type="number" placeholder="请输入手机号" v-model="postData.tel" maxlength="11"/>
-            <button @click="getConfirmCode">{{confirm.time?confirm.time:"发送验证码"}}</button>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="o-login__title">验证码</div>
-          <div class="o-login__titleinput">
-            <input type="text" placeholder="请输入验证码" v-model="postData.yzcode" maxlength="6"/>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="o-login__title">身份证</div>
-          <div class="o-login__titleinput">
-            <input type="text" placeholder="请输入证件号" v-model="postData.card" maxlength="18"/>
-          </div>
-        </div>
-        <div class="flex">
-          <div class="o-login__title">党组织</div>
-          <div class="o-login__titleinput">
-            <picker @change="bindPickerChange" :value="index" :range="partyOrganizationList" range-key="title">
-              <view class="picker">
-                {{partyOrganizationList[index].title}}
-              </view>
-            </picker>
-          </div>
+    </div>
+    <div class="o-login__form">
+      <div class="flex">
+        <div class="o-login__title">姓名</div>
+        <div class="o-login__titleinput">
+          <input type="text" placeholder="请输入姓名" v-model="postData.name"/>
         </div>
       </div>
-      <div class="o-login__submit">
-        <button @click="postAllData">登陆</button>
+      <div class="flex">
+        <div class="o-login__title">手机号</div>
+        <div class="o-login__titleinput">
+          <input type="number" placeholder="请输入手机号" v-model="postData.tel" maxlength="11"/>
+          <button @click="getConfirmCode">{{confirm.time?confirm.time:"发送验证码"}}</button>
+        </div>
       </div>
+      <div class="flex">
+        <div class="o-login__title">验证码</div>
+        <div class="o-login__titleinput">
+          <input type="text" placeholder="请输入验证码" v-model="postData.yzcode" maxlength="6"/>
+        </div>
+      </div>
+      <div class="flex" v-if="loginButton?false:true">
+        <div class="o-login__title">身份证</div>
+        <div class="o-login__titleinput">
+          <input type="text" placeholder="请输入证件号" v-model="postData.card" maxlength="18"/>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="o-login__title">党组织</div>
+        <div class="o-login__titleinput">
+          <picker @change="bindPickerChange" :value="index" :range="partyOrganizationList" range-key="title">
+            <view class="picker">
+              {{partyOrganizationList[index].title}}
+            </view>
+          </picker>
+        </div>
+      </div>
+    </div>
+    <div class="o-login__submit">
+      <button @click="postAllData">{{loginButton?"登陆":"注册"}}</button>
     </div>
   </div>
 </template>
@@ -53,6 +54,7 @@
     name: "index",
     data() {
       return {
+        loginButton: true,
         confirm: {
           time: null,
           code: null
@@ -104,7 +106,6 @@
             code: userCode
           },
           success: function(res) {
-            console.log("写入缓存");
             _this.postData.openid = res.data.openid;
             wx.setStorage({
               key: "openid",
@@ -122,7 +123,6 @@
             openid: openid
           },
           success: res => {
-            console.log(res);
             if (res.data.msg != "未登录") {
               wx.navigateTo({
                 url: "/pages/fouronone/main"
@@ -133,7 +133,6 @@
       },
       getConfirmCode() {
         let _this = this;
-        console.log("dd");
         wx.request({
           url: "https://hanzhengjie.tenqent.com/index.php/Api/Dangyuan/yzcode",
           method: "get",
@@ -144,7 +143,6 @@
             tel: _this.postData.tel
           },
           success: function(res) {
-            console.log(res);
             if (res.data.code === 200) {
               wx.showToast({
                 title: "验证码获取成功",
@@ -171,9 +169,6 @@
       },
       postAllData() {
         let _this = this;
-
-        console.log(_this.postData);
-
         wx.request({
           url: "https://hanzhengjie.tenqent.com/index.php/Api/Dangyuan/register",
           method: "post",
@@ -188,8 +183,10 @@
             dzz_id: _this.postData.dzz_id,
             yzcode: _this.postData.yzcode
           },
-          success:function(res) {
-            if(res.data.msg==="注册成功"){
+          success: function(res) {
+            console.log(res)
+            if (res.data.code === 200) {
+
               wx.setStorage({
                 key: "openid",
                 data: _this.postData.openid
@@ -199,13 +196,13 @@
               });
             }
           }
-        })
+        });
       },
 
       timeTic() {
         let _this = this;
         _this.confirm.status = false;
-        _this.confirm.time = 10;
+        _this.confirm.time = 60;
         if (_this.confirm.time) {
           var timer = setInterval(function() {
             if (_this.confirm.time <= 0) {
@@ -225,32 +222,12 @@
   @include o('login') {
     width: 100%;
     background-color: #fff;
-    @include e('buttonblock') {
-      padding: 30px 0;
-    }
-    @include e('button') {
-      width: 55%;
-      margin: 0 auto;
-      border-radius: 50px;
-      border: 3px solid $color-red;
-      justify-content: space-around;
-      overflow: hidden;
-      @include e('button');
-      :hover {
-        color: #fff;
-        background: $color-red;
-      }
-      div {
-        width: 50%;
-        text-align: center;
-        padding: 8px;
-        font-size: 15px;
-      }
-    }
+    height: 100vh;
+    overflow: hidden;
     @include e('form') {
-      padding: 0 20px 60px 20px;
+      padding: 20px 8px;
       .flex {
-        padding: 10px 0;
+        padding: 12px 0;
         border-bottom: 1px solid #fafafa;
         justify-content: flex-start;
       }
@@ -265,30 +242,37 @@
         float: right;
         z-index: 999;
         font-size: 14px;
-        margin-top: -30px;
+        margin-top: -29px;
         border-radius: 10px;
         background-color: $color-red;
         color: #fff;
       }
     }
     @include e('submit') {
-      padding-bottom: 45px;
       button {
-        width: 30%;
+        margin-top: 30px;
+        width: 45%;
         line-height: 2;
         background-color: $color-red;
         color: #ffffff;
       }
     }
-    @include e('loginButton') {
-      width: 100%;
-      text-align: center;
-      font-size: 38px;
-      color: $color-red;
-      font-weight: 800;
-      opacity: 0.6;
+    @include e('button') {
+      display: flex;
+      margin: 30px auto;
+      margin-top: 50px;
+      border: 5px solid $color-red;
+      border-radius: 50px;
+      overflow: hidden;
+      div {
+        padding: 5px 20px;
+        font-size: 18px;
+        color: $color-red;
+      }
+      .active {
+        background: $color-red;
+        color: white;
+      }
     }
   }
-
-
 </style>

@@ -12,8 +12,8 @@
       </p>
     </div>
     <div class="foot">
-      <p class="yd">阅读<span>4</span></p>
-      <p class="zan"><span class="bj"></span><span class="zi">赞</span></p>
+      <!--<p class="yd">阅读<span>4</span></p>-->
+      <!--<p class="zan"><span class="bj"></span><span class="zi">赞</span></p>-->
     </div>
   </div>
 </template>
@@ -44,9 +44,7 @@
         },
         success: function(res) {
           _this.page = res.data.data;
-          console.log(res);
           if (_this.postData.type === "b") {
-            console.log(res)
             let date = new Date(_this.page.post_date);
             _this.page.post_content = decodeURI(_this.page.post_content);
             _this.page.post_title = decodeURI(_this.page.post_title);
@@ -56,7 +54,6 @@
       });
     },
     onLoad: function(opts) {
-      console.log(opts);
       this.postData.id = opts.id;
       this.postData.type = opts.type;
     }
