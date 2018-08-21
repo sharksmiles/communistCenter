@@ -1,21 +1,8 @@
-# my-project
+## 武汉市汉正市场党建e家
 
-> A Mpvue project
+通过小程序进行党建思想宣传，党务人员管理，提供微心愿，资源发布，党员微课，在线缴费等功能，方便党委思想宣传与党员管理。
 
-## Build Setup
+- mpvue
+- scss-bem
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+项目采用mpvue开发，采用scss-bem进行scss命名管理，主要目的在于熟悉小程序开发。
