@@ -1,25 +1,22 @@
 <template>
   <div class="o-hero">
-    <div style="height: 100vh;overflow: hidden;margin-bottom: 50px">
+    <div style="height: 100vh;overflow: hidden">
       <div class="flexd">
-        <div class="o-hero__block" v-for="item of heroList" :style="'background-image: url('+item.image+')'">
-          <div class="o-hero__location">{{item.danwei}}</div>
-          <div class="o-hero__pic">
-            <img src="http://pd37peogt.bkt.clouddn.com/%E5%9B%BE%E5%B1%82%204.png" alt="">
-          </div>
-          <div class="o-hero__name">{{item.name}}</div>
-        </div>
+        <a class="o-hero__block" v-for="(item,index) of heroList" :key="index" :href="'/pages/manage/hero/detail/main?userid='+item.id">
+
+            <img :src="item.image" style="width:80%;height:80%;margin-bottom:-208px;z-index:999;">
+            <div class="o-hero__location">{{item.danwei}}</div>
+            <div class="o-hero__pic">
+              <img src="https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/heroPerson.png" alt="">
+            </div>
+            <div class="o-hero__name">{{item.name}}</div>
+          </a>
 
         <div class="o-hero__block" style="opacity: 0">
         </div>
         <div class="o-hero__block" style="opacity: 0">
         </div>
-        <div class="o-hero__block" style="opacity: 0">
-        </div>
       </div>
-    </div>
-    <div style="width:100vw;position:absolute;bottom:-5px;opacity:0.9;">
-      <img src="http://pd37peogt.bkt.clouddn.com/552.png" style="width: 100%">
     </div>
   </div>
 </template>
@@ -27,20 +24,22 @@
 <script>
   export default {
     name: "index",
-    data(){
-      return{
-        heroList:[]
-      }
+    data() {
+      return {
+        heroList: []
+      };
     },
-    created(){
+    created() {
       let _this = this;
       wx.request({
-        url:"https://hanzhengjie.tenqent.com/index.php/Api/Fengcai/index",
-        method:"GET",
-        success:res=>{
-          _this.heroList=res.data.data
+        url: "https://hanzhengjie.tenqent.com/index.php/Api/Fengcai/index",
+        method: "GET",
+        success: res => {
+          _this.heroList = res.data.data;
+
+          console.log(_this.heroList)
         }
-      })
+      });
     }
   };
 </script>
@@ -50,7 +49,7 @@
   @import "../../../scss/base";
 
   @include o('hero') {
-    background: url("http://pd37peogt.bkt.clouddn.com/%E7%BB%84%204.png");
+    background: url("https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/heroBg.png");
     background-size: cover;
     overflow: hidden !important;
     height: 100vh;
@@ -66,7 +65,7 @@
       border-radius: 5px;
     }
     @include e('block') {
-      background-size: 86% 80%;
+      background-size: 80% 76%;
       background-repeat: no-repeat;
       background-position: center;
       background-position-y: 31px;
@@ -74,8 +73,12 @@
       height: 193px;
       margin: 20px 10px;
       text-align: center;
+      &:first-child,&:nth-child(2){
+        margin-top: 0;
+      }
     }
     @include e('pic') {
+      background-color: #eedddd;
       height: 177px;
       img {
         width: 100%;
@@ -89,8 +92,8 @@
 
   .flexd {
     display: flex;
-    height: 100vh;
-    padding-top: 136px;
+    height: 75vh;
+    margin-top: 25vh;
     justify-content: center;
     justify-items: center !important;
     flex-wrap: wrap;

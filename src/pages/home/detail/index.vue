@@ -7,9 +7,9 @@
       </span>
     </div>
     <div class="wenz">
-      <p v-html="postData.type==='a'?page.content:page.post_content">
 
-      </p>
+      <wxParse :content="postData.type==='a'?page.content:page.post_content" @preview="preview" @navigate="navigate"/>
+
     </div>
     <div class="foot">
       <!--<p class="yd">阅读<span>4</span></p>-->
@@ -19,8 +19,13 @@
 </template>
 
 <script>
+  import wxParse from "mpvue-wxparse";
+
   export default {
     name: "index",
+    components: {
+      wxParse
+    },
     data() {
       return {
         postData: {
@@ -32,6 +37,7 @@
     },
     mounted() {
       let _this = this;
+
       wx.request({
         url: "https://hanzhengjie.tenqent.com/index.php/Api/Xq/index",
         method: "get",
@@ -47,6 +53,7 @@
           if (_this.postData.type === "b") {
             let date = new Date(_this.page.post_date);
             _this.page.post_content = decodeURI(_this.page.post_content);
+
             _this.page.post_title = decodeURI(_this.page.post_title);
             _this.page.post_date = `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`;
           }
@@ -61,6 +68,7 @@
 </script>
 
 <style lang="scss" scoped>
+
   .quanju {
     background: #fff;
     padding: 15px 15px 60px 15px;
@@ -142,5 +150,9 @@
     display: block;
     float: right;
     margin-right: 4px;
+  }
+
+  .wxParse .p .img {
+    display: block !important;
   }
 </style>

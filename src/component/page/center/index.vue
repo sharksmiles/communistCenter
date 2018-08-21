@@ -15,18 +15,18 @@
     <a href="/pages/serve/wish/mywish/main">
       <div class="flex menu">
         <div class="img iconfont icon-fabu-copy" style="background-color: #c9a4f2"></div>
-        <div class="content">我的发布：<span>{{info.fa_num}}件</span></div>
+        <div class="content">我的发布<span>{{info.fa_num==true?'：'+info.fa_num+'件':'：无'}}</span></div>
         <div class="iconfont icon-right"></div>
       </div>
     </a>
     <div class="flex menu">
       <div class="img iconfont icon-geti" style="background-color: #48cfae"></div>
-      <div class="content">我的认领：<span>{{info.ren_num}}件</span></div>
+      <div class="content">我的认领<span>{{info.ren_num==true?'：'+info.ren_num+'件':'：无'}}</span></div>
       <div class="iconfont icon-right"></div>
     </div>
     <div class="flex menu">
       <div class="img iconfont icon-jifen" style="background-color: #ff9623"></div>
-      <div class="content">我的积分：<span>{{info.jifen?info.jifen:"无"}}</span></div>
+      <div class="content">我的积分：<span>{{info.jifen==true?info.jifen:"无"}}</span></div>
       <div class="iconfont icon-right" style="opacity: 0"></div>
     </div>
   </div>
@@ -66,7 +66,7 @@
   @include o('center') {
     @include e('navimg') {
       height: 150px;
-      background-image: url("http://pd37peogt.bkt.clouddn.com/ewqew1.png");
+      background-image: url("https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/indexNav.png");
       background-size: cover;
     }
     @include e('avator') {
@@ -78,7 +78,7 @@
       margin: 0 10vw;
       position: absolute;
       border-radius: 10px 10px 0 0;
-      background-image: url("http://pd37peogt.bkt.clouddn.com/%E7%BB%84%2032%281%29.png");
+      background-image: url("https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/jinse@2x.png");
       .info {
         width: 60vw;
         padding: 36px;

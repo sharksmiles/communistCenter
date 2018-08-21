@@ -16,7 +16,7 @@
       <div class="flex">
         <div class="o-login__title">手机号</div>
         <div class="o-login__titleinput">
-          <input type="number" placeholder="请输入手机号" v-model="postData.tel" maxlength="11"/>
+          <input type="number" placeholder="请输入手机号" style="margin-right: 266rpx" v-model="postData.tel" maxlength="11"/>
           <button @click="getConfirmCode">{{confirm.time?confirm.time:"发送验证码"}}</button>
         </div>
       </div>
@@ -54,7 +54,7 @@
     name: "index",
     data() {
       return {
-        loginButton: true,
+        loginButton: false,
         confirm: {
           time: null,
           code: null
@@ -185,15 +185,20 @@
           },
           success: function(res) {
             console.log(res)
-            if (res.data.code === 200) {
-
+            if (res.data.code === "200") {
               wx.setStorage({
                 key: "openid",
                 data: _this.postData.openid
               });
-              wx.navigateTo({
-                url: "/pages/fouronone/main"
+              wx.showToast({
+                icon: "success",
+                title: "提交成功！"
               });
+              setTimeout(()=>{
+                wx.navigateTo({
+                  url: "/pages/fouronone/main"
+                });
+              },2000)
             }
           }
         });

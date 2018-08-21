@@ -1,6 +1,6 @@
 <template>
   <div
-    style="overflow: hidden;height: 100vh;background: white;background-image: url('http://pd37peogt.bkt.clouddn.com/e%281%29.png');background-size: 100% 100%">
+    style="overflow: hidden;height: 100vh;background: white;background-image: url('https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/project.png');background-size: 100% 100%">
     <div class="o-project">
       <div class="o-project__push">
         <a :href="'/pages/serve/push/main?title='+baseUrl">

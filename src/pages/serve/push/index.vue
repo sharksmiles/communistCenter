@@ -25,7 +25,7 @@
       return {
         baseUrl: "",
         nav: "",
-        postUrl: "https://hanzhengjie.tenqent.com/index.php/Api/Qingdan/add",
+        postUrl: "https://hanzhengjie.tenqent.com/index.php/Api/Weixinyuan/add",
         listUrl: [{
           label: "need",
           url: "https://hanzhengjie.tenqent.com/index.php/Api/Qingdan/add"
@@ -39,7 +39,7 @@
           name: "",
           tel: "",
           content: "",
-          type: ""
+          type:""
         }
       };
     },
@@ -47,7 +47,7 @@
       this.wishData.openid = CONFIG.OpenId;
       switch (this.baseUrl) {
         case "wish":
-          this.postUrl = "https://hanzhengjie.tenqent.com/index.php/Api/Qingdan/add";
+          this.postUrl = "https://hanzhengjie.tenqent.com/index.php/Api/Weixinyuan/add";
           this.nav = "心愿";
           break;
         case "need":
@@ -93,6 +93,11 @@
                 icon: "success",
                 title: "提交成功！"
               });
+              setTimeout(()=>{
+                wx.navigateTo({
+                  url: "/pages/serve/wish/main"
+                });
+              },2000)
               for (let item in _this.wishData) {
                 item == "openid" ? null : _this.wishData[item] = null;
               }

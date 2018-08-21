@@ -46,16 +46,7 @@
       };
     },
     created() {
-      let _this = this;
-      wx.login({
-        success: function(res) {
-          _this.getOpenId(res.code);
-        }
-      });
-    },
-    mounted(){
-      let _this = this;
-      _this.isLogin(_this.postData.openid);
+
     },
     methods: {
       changePage(value) {
@@ -91,6 +82,9 @@
           data: {
             openid: openid
           },
+          header: {
+            "content-type": "application/x-www-form-urlencoded"
+          },
           success: res => {
             if (res.data.msg === "未登录") {
               wx.navigateTo({
@@ -100,6 +94,17 @@
           }
         });
       }
+    },
+    onShow(){
+      let _this = this;
+      wx.login({
+        success: function(res) {
+          _this.getOpenId(res.code);
+          setTimeout(()=>{
+            _this.isLogin(_this.postData.openid);
+          },1000)
+        }
+      });
     }
   };
 </script>

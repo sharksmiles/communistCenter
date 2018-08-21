@@ -23,7 +23,9 @@
       </div>
       <div>
         <a href="/pages/serve/wish/main">
-          <span class="iconfont icon-love" style="color: #fe0000"></span>
+          <span class="iconfont">
+            <img src="https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/xinyuan@2x.png" id="wishImg" alt="">
+          </span>
           <p>微心愿</p>
         </a>
       </div>
@@ -50,11 +52,16 @@
   @include o('manage') {
     @include e('topimg') {
       height: 150px;
-      background-image: url("http://pd37peogt.bkt.clouddn.com/d%281%29.png");
+      background-image: url("https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/serve.png");
       background-size: cover;
     }
     .flex {
       margin: 10px;
     }
+  }
+
+  #wishImg{
+    width: 27px;
+    height: 27px;
   }
 </style>

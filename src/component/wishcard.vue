@@ -17,13 +17,14 @@
       let _this = this;
       setTimeout(function() {
         _this.wishList.map((value, index) => {
-          // value.add_time = this.formatDate(value.add_time);
           _this.$set(_this.wishList[index], "add_time", _this.formatDate(value.add_time));
         });
       }, 500);
     },
     methods: {
       formatDate: function(time) {
+        console.log(time)
+        time=time*1000
         let date = new Date(parseInt(time));
         return `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`;
       }

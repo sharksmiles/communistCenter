@@ -35,7 +35,7 @@
 
   .topimg {
     height: 180px;
-    background-image: url('http://pd37peogt.bkt.clouddn.com/f%281%29.png');
+    background-image: url('https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/conduct.png');
     background-size: cover;
   }
 </style>
