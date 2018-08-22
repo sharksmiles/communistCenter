@@ -7,7 +7,6 @@
           <div class="o-hero__title">
             <img src="/static/location.png"></img>
             {{page.name}}</div>
-     
             <wxParse :content="page.content" @preview="preview" @navigate="navigate"/>
         </div>
       </div>
