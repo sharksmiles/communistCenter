@@ -52,9 +52,8 @@
           _this.page = res.data.data;
           if (_this.postData.type === "b") {
             let date = new Date(_this.page.post_date);
-            _this.page.post_content = decodeURI(_this.page.post_content);
-
-            _this.page.post_title = decodeURI(_this.page.post_title);
+            _this.page.post_content = decodeURI(_this.page.post_content('%'));
+            _this.page.post_title = decodeURI(_this.page.post_title('%'));
             _this.page.post_date = `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日`;
           }
         }
@@ -68,7 +67,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+@import url("~mpvue-wxparse/src/wxParse.css");
   .quanju {
     background: #fff;
     padding: 15px 15px 60px 15px;

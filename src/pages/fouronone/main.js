@@ -6,6 +6,6 @@ app.$mount();
 
 export default {
   config: {
-    navigationBarTitleText: "党建首页"
+    navigationBarTitleText: "汉正市场党建e家"
   }
 };
