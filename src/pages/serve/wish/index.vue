@@ -11,7 +11,7 @@
     <div
       style="height: 200px;background-image: url('http://pd37peogt.bkt.clouddn.com/c%281%29.png');background-size: cover"></div>
     <div class="flex o-wish__topBar">
-      <span class="iconfont" style="background-image: url('https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/wishLight.png');background-repeat:no-repeat;width: 38px"></span>
+      <span class="iconfont" style="background-image: url('https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/xinyuan@2x.png');background-repeat:no-repeat;width: 38px"></span>
       <div style="width: 75%">微心愿</div>
       <a href="/pages/serve/push/main?title=wish">
         <button class="o-wish__button">

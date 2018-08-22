@@ -4,13 +4,38 @@
       <open-data type="userAvatarUrl"></open-data>
     </div>
     <span class="content">
-      <open-data type="userNickName"></open-data> | 党员</span>
+      {{name}}{{type?' | '+type:''}}</span>
   </div>
 </template>
 
 <script>
   export default {
+
     name: "info.vue",
+    data(){
+      return{
+        name:"",
+        type:""
+      }
+    },
+    onLoad:function(){
+      let that =this
+      const OPENID = wx.getStorageSync('openid')
+      wx.request({
+        url:"https://hanzhengjie.tenqent.com/index.php/Api/GetUserinfo/userinfo",
+        data: {
+          openid: OPENID
+        },
+        method:"post",
+        header: {
+          "content-type": "application/x-www-form-urlencoded"
+        },
+        success:function(res) {
+          that.name = res.data.data.name;
+          that.type = res.data.data.shenfen
+        }
+      })
+    }
   };
 </script>
 

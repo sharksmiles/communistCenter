@@ -31,9 +31,9 @@
         imgUrls: [
           "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/ddd.jpg",
           "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/two%402x.png",
-          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-1.png",
-          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-2.png",
-          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-3.png"
+          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-1.jpg",
+          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-2.jpg",
+          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-3.jpg"
         ],
         indicatorDots: true,
         autoplay: true,

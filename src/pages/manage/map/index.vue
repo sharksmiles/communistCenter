@@ -36,9 +36,7 @@ export default {
       }
     });
     this.mapCtx = wx.createMapContext("myMap");
-  },
-  onShow:function() {
-    let _this = this;
+
     wx.request({
       url: "https://hanzhengjie.tenqent.com/index.php/Api/Map/index",
       success: function(res) {
@@ -60,11 +58,11 @@ export default {
             textAlign: "left"
           }
         };
-        for(let i of data.data){
+        for(let i of res.data.data){
           console.log(i)
         }
+
         res.data.data.forEach((item,index) => {
-        
           markerObj.latitude = item.latitude;
           markerObj.longitude = item.longitude;
           markerObj.callout.content = `${item.title} \n ${item.location}`;
@@ -72,7 +70,7 @@ export default {
         });
       }
     });
-  },
+    },
   methods: {
     resetLocation() {
       this.location = this.searchResult;
