@@ -11,7 +11,8 @@
         <div class="o-project__section">
           <div>{{page.title}}</div>
           <!--<p class="o-project__author">8月7日 汉正街党委工作部</p>-->
-          <p>{{page.content}}</p>
+          <wxParse :content="page.content" @preview="preview" @navigate="navigate"/>
+
         </div>
       </div>
     </div>
@@ -19,15 +20,21 @@
 </template>
 
 <script>
+  import wxParse from "mpvue-wxparse";
+
   export default {
     name: "index",
+    components: {
+      wxParse
+    },
     data() {
       return {
         type: null,
         baseUrl: "",
         page: {}
-      };
+      }
     },
+
     mounted() {
       let _this = this;
       wx.request({
@@ -108,5 +115,9 @@
       font-size: 15px;
       margin-top: -10px;
     }
+  }
+
+  .p{
+    color:$color-red!important;
   }
 </style>

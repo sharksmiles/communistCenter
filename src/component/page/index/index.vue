@@ -8,6 +8,7 @@
         </swiper-item>
       </swiper>
     </div>
+
     <div style="margin-top: -8px">
       <newstitle :title="'党建动态'"></newstitle>
     </div>
@@ -29,11 +30,12 @@
     data() {
       return {
         imgUrls: [
-          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/ddd.jpg",
-          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/two%402x.png",
+
           "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-1.jpg",
           "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-2.jpg",
-          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-3.jpg"
+          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-3.jpg",
+          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-4.jpg",
+          "https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/swiper1-5.jpg"
         ],
         indicatorDots: true,
         autoplay: true,

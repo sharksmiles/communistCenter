@@ -5,9 +5,10 @@
       <input type="text" v-model="searchValue" @input="setSearchReasult" placeholder="请输入关键字">
     </div>
     <div id="searchValue" @click="resetLocation"> {{searchResult.title}}</div>
-    <map id="map" :longitude="location.longitude" :latitude="location.latitude" :scale="17" :controls="controls"
+
+    <map id="myMap" :longitude="location.longitude" :latitude="location.latitude" :scale="17" :controls="controls"
          :bindcontroltap="controltap" :markers="markers" :bindmarkertap="markertap" :polyline="polyline"
-         :bindregionchange="regionchange" show-location></map>
+         :bindregionchange="regionchange" show-location ></map>
   </div>
 </template>
 
@@ -29,45 +30,60 @@ export default {
   created() {
     let _this = this;
     wx.getLocation({
-      type: "gcj02",
       success: function(res) {
         _this.location.latitude = res.latitude;
         _this.location.longitude = res.longitude;
       }
     });
-    this.mapCtx = wx.createMapContext("myMap");
+      this.mapCtx = wx.createMapContext("myMap");
+       this.mapCtx.moveToLocation();
+
+
 
     wx.request({
       url: "https://hanzhengjie.tenqent.com/index.php/Api/Map/index",
       success: function(res) {
-        let markerObj = {
-          iconPath: "/static/locationIcon.png",
-          id: 0,
-          latitude: null,
-          longitude: null,
-          width: 90,
-          height: 90,
-          callout: {
-            content: "",
-            color: "#ffffff",
-            fontSize: 12,
-            borderRadius: 5,
-            bgColor: "#cc0e2e",
-            display: "ALWAYS",
-            padding: 8,
-            textAlign: "left"
-          }
-        };
-        for(let i of res.data.data){
-          console.log(i)
+        let arr= res.data.data;
+        function markerObj(latitude,longitude,content){
+          let obj = {
+            iconPath: "/static/locationIcon.png",
+            id: 0,
+            latitude: null,
+            longitude: null,
+            width: 80,
+            height: 80,
+            callout: {
+              content: "",
+              color: "#ffffff",
+              fontSize: 12,
+              borderRadius: 5,
+              bgColor: "#cc0e2e",
+              display: "ALWAYS",
+              padding: 8,
+              textAlign: "left"
+            }
+          };
+          obj.latitude = latitude;
+          obj.longitude = longitude;
+          obj.callout.content = content;
+          return obj
+        }
+        for(let i=0;i<arr.length;i++)
+        {
+          console.log(arr[i]);
+          let content = `${arr[i].title} \n ${arr[i].location}`;
+//          let content= arr[i].title;
+         console.log(content);
+          let marker = new  markerObj(arr[i].latitude,arr[i].longitude,content);
+          _this.markers.push(marker);
+
         }
 
-        res.data.data.forEach((item,index) => {
-          markerObj.latitude = item.latitude;
-          markerObj.longitude = item.longitude;
-          markerObj.callout.content = `${item.title} \n ${item.location}`;
-          _this.markers.push(markerObj);
-        });
+//       arr.forEach( function(item){
+//          let content = `${item.title} \n ${item.location}`;
+//          let marker = new  markerObj(item.latitude,item.longitude,content);
+//          _this.markers.push(marker);
+//        });
       }
     });
     },
@@ -94,6 +110,7 @@ export default {
         },
         animationEnd() {
           console.log("animation end");
+
         }
       });
     },
