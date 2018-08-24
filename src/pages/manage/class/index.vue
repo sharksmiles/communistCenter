@@ -22,7 +22,8 @@
         url: "https://hanzhengjie.tenqent.com/index.php/Api/Weike/index",
         method: "get",
         success: function(res) {
-          _this.videoList = res.data.data
+          _this.videoList = res.data.data;
+          console.log(res.data.data);
         }
       });
     }

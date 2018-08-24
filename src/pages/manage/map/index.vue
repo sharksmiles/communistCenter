@@ -33,6 +33,7 @@ export default {
       success: function(res) {
         _this.location.latitude = res.latitude;
         _this.location.longitude = res.longitude;
+//        console.log(res);
       }
     });
       this.mapCtx = wx.createMapContext("myMap");
@@ -52,28 +53,31 @@ export default {
             longitude: null,
             width: 80,
             height: 80,
-            callout: {
+            label: {
               content: "",
               color: "#ffffff",
               fontSize: 12,
-              borderRadius: 5,
+              borderRadius: 10,
               bgColor: "#cc0e2e",
               display: "ALWAYS",
               padding: 8,
-              textAlign: "left"
+              textAlign: "left",
+              x:-80,
+              y:-130
             }
           };
           obj.latitude = latitude;
           obj.longitude = longitude;
-          obj.callout.content = content;
+          obj.label.content = content;
+          obj.id++;
           return obj
         }
         for(let i=0;i<arr.length;i++)
         {
-          console.log(arr[i]);
+//          console.log(arr[i]);
           let content = `${arr[i].title} \n ${arr[i].location}`;
 //          let content= arr[i].title;
-         console.log(content);
+//         console.log(content);
           let marker = new  markerObj(arr[i].latitude,arr[i].longitude,content);
           _this.markers.push(marker);
 
