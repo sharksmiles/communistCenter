@@ -2,12 +2,11 @@
   <div class="o-hero">
     <div style="height: 100vh;overflow: hidden">
       <div class="flexd">
-        <a class="o-hero__block" v-for="(item,index) of heroList" :key="index" :href="'/pages/manage/hero/detail/main?userid='+item.id">
-
-            <img :src="item.image" style="width:80%;height:80%;margin-bottom:-208px;z-index:999;">
-            <div class="o-hero__location">{{item.danwei}}</div>
-            <div class="o-hero__pic">
-              <img src="https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/heroPerson.png" alt="">
+        <a class="o-hero__block " v-for="(item,index) of heroList" :key="index" :href="'/pages/manage/hero/detail/main?userid='+item.id">
+          <div class="o-hero__location" style="z-index: 999">{{item.danwei}}</div>
+            <div class="o-hero__pic item_imgbgc">
+              <img :src="item.image" style="width:80%;height:80%; margin-top: 20px">
+              <img src="https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/heroPerson.png"  class="item_img" alt="">
             </div>
             <div class="o-hero__name">{{item.name}}</div>
           </a>
@@ -79,6 +78,11 @@
     }
     @include e('pic') {
       background-color: #eedddd;
+      /*background-image: url("https://hanzhengjie.tenqent.com/public/wechat/images/hanzhengjieAPP/heroPerson.png");*/
+      /*background-size: 100% 105% ;*/
+      /*background-position: center;*/
+      /*background-repeat: no-repeat;*/
+
       height: 177px;
       img {
         width: 100%;
@@ -89,7 +93,6 @@
       color: $color-red;
     }
   }
-
   .flexd {
     display: flex;
     height: 75vh;
@@ -98,5 +101,14 @@
     justify-items: center !important;
     flex-wrap: wrap;
     overflow-y: scroll;
+  }
+  .item_imgbgc{
+    position: relative;
+  }
+  .item_img{
+    position: absolute;
+
+    left: 0;
+    top: 0;
   }
 </style>
